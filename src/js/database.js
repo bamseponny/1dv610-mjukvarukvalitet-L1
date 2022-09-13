@@ -14,6 +14,14 @@ export const videoGameLibrary = [
     genre: 'Action',
     countryOfOrgin: 'United States',
     grade: 4
+  },
+  {
+    title: 'The Last of Us Part I',
+    format: 'Playstation 4',
+    releaseYear: 2020,
+    genre: 'Action',
+    countryOfOrgin: 'United States',
+    grade: 4
   }
 ]
 

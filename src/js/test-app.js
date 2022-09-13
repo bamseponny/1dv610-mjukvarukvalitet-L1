@@ -1,4 +1,4 @@
 import { listDatabase, filterGrade } from './main-module.js'
 
-/* listDatabase() */
-filterGrade(3)
+listDatabase()
+filterGrade('2')

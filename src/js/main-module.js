@@ -6,24 +6,25 @@ import videoGameLibrary from './database.js'
 function listDatabase () {
   console.log(videoGameLibrary)
 }
-
 /**
- * Filter the games in library depending on the chosen grade.
+ * Filter the games in the library depending on the chosen grade.
  *
  * @param {number} grade - Chosen grade.
  */
 function filterGrade (grade) {
-  if (grade < 1 || grade > 5) {
+  if (grade < 1 || grade > 5 || typeof grade !== 'number') {
     console.log('Please choose a grade between 1 and 5.')
   } else {
     const filterTheGames = videoGameLibrary.filter((gameLibrary) => gameLibrary.grade === grade)
 
-    filterTheGames.length === 0 ? (console.log(`No games to show with the grade ${grade}.`)) : (console.log(filterTheGames))
+    if (filterTheGames.length === 0) {
+      console.log(`No games to show with the grade ${grade}.`)
+    } else {
+      const titles = filterTheGames.map(grade => grade.title).sort()
+      const resultString = titles.join(', ')
+      console.log(`The games with the grade ${grade} in your collection are ${resultString}.`)
+    }
   }
 }
-
-/* const filterGrade = testObject.filter((testObject) => testObject.grade === 3)
-
-console.log(filterGrade) */
 
 export { listDatabase, filterGrade }
