@@ -1,4 +1,6 @@
-import { listDatabase, filterGrade } from './main-module.js'
+import { listDatabase, filterGrade, getGrades, getAverage } from './main-module.js'
 
-listDatabase()
-filterGrade('2')
+/* listDatabase() */
+/* filterGrade(4) */
+/* getGrades() */
+getAverage()

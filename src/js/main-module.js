@@ -6,6 +6,7 @@ import videoGameLibrary from './database.js'
 function listDatabase () {
   console.log(videoGameLibrary)
 }
+
 /**
  * Filter the games in the library depending on the chosen grade.
  *
@@ -27,4 +28,24 @@ function filterGrade (grade) {
   }
 }
 
-export { listDatabase, filterGrade }
+/**
+ * Filter out the pure grades (numbers in a certain scope, 1-5, 1-100, etc).
+ * A function which primarly is being used by other functions.
+ *
+ * @returns {number[]} numbers - Returns an array of numbers.
+ */
+function getGrades () {
+  const gradesArray = videoGameLibrary.map(element => element.grade)
+  return gradesArray
+}
+
+/**
+ * Returns the average of an array with numbers.
+ */
+function getAverage () {
+  const averageArray = getGrades()
+  const average = averageArray.reduce((a, b) => (a + b)) / averageArray.length
+  console.log(`The average of the grade is ${Math.round(average * 100) / 100}.`)
+}
+
+export { listDatabase, filterGrade, getGrades, getAverage }
