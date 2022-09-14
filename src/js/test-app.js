@@ -1,6 +1,9 @@
-import { listDatabase, filterGrade, getGrades, getAverage } from './main-module.js'
+import { MyFavouriteGames } from './index.js'
 
-/* listDatabase() */
-/* filterGrade(4) */
-/* getGrades() */
-getAverage()
+const testApp = new MyFavouriteGames()
+
+/* testApp.listDatabase()
+testApp.filterGrade(4)
+testApp.getGrades()
+testApp.getAverage() */
+testApp.gradeConverter(100, 50)

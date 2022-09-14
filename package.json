@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Assignment for the course 1DV610 at the Linnaeus University",
   "type": "module",
+  "main": "src/index.js",
   "scripts": {
     "lint": "npx eslint ./src || exit 0",
     "lint:fix": "npx eslint ./src --fix || exit 0",
