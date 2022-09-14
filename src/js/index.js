@@ -7,11 +7,13 @@
 import videoGameLibrary from './database.js'
 
 /**
+ * Represents a MyFavouriteGames class.
  *
+ * @class My Favourite Games
  */
 export class MyFavouriteGames {
   /**
-   *
+   * Creates an instance of MyFavouriteGames.
    */
   constructor () {
     this.minimumGrade = 1
@@ -78,24 +80,31 @@ export class MyFavouriteGames {
     switch (oldMax) {
       case 100: {
         const newGrade = Math.round(oldGrade / 100 * 5)
-        console.log(oldMax)
+
+        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
         break
       }
-      case 10:
-        console.log(oldMax)
+      case 10: {
+        const newGrade = Math.round(oldGrade / 10 * 5)
+
+        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
         break
-      case 'A':
-        console.log(oldMax)
+      }
+      case 'A': {
+        const transitionGrade = oldGrade === 'F' ? oldGrade = 'E' : oldGrade
+
+        const letterArray = ['F', 'E', 'D', 'C', 'B', 'A']
+        const newGrade = letterArray.indexOf(transitionGrade)
+
+        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
         break
+      }
       default:
-        console.log('This scope is not supported.')
+        console.log('This scope is not supported.\n')
     }
   }
 
   // Loopa igenom och hitta länder. Hur många? Vilka spel?
   // Loopa igenom och hitta efter genre. Tabell!
-  // Omvandla betyg till olika skalor. Hur? 1-5, 1-10, 1-100.
   // Plocka ut spel baserade på tidsspann.
-
-/* export { listDatabase, filterGrade, getGrades, getAverage } */
 }
