@@ -5,6 +5,7 @@ export const videoGameLibrary = [
     releaseYear: 2022,
     genre: 'Action',
     countryOfOrgin: 'Netherlands',
+    series: 'Horizon',
     grade: 5
   },
   {
@@ -13,14 +14,16 @@ export const videoGameLibrary = [
     releaseYear: 2020,
     genre: 'Action',
     countryOfOrgin: 'United States',
+    series: 'The Last of Us',
     grade: 4
   },
   {
     title: 'The Last of Us Part I',
     format: 'Playstation 4',
-    releaseYear: 2020,
+    releaseYear: 2022,
     genre: 'Action',
     countryOfOrgin: 'United States',
+    series: 'The Last of Us',
     grade: 4
   }
 ]

@@ -28,6 +28,23 @@ export class MyFavouriteGames {
   }
 
   /**
+   * Get all games from a certain time span.
+   *
+   * @param {number} startYear - Chosen start year.
+   * @param {number} endYear - Chosen end year.
+   */
+  listGamesByTimeSpan (startYear, endYear) {
+    const titlesOfTimeSpan = []
+    for (const element of videoGameLibrary) {
+      if (element.releaseYear >= startYear && element.releaseYear <= endYear) {
+        /* console.log(element.title) */
+        titlesOfTimeSpan.push(element.title)
+      }
+    }
+    console.log(`The games in your library between years ${startYear} and ${endYear} are ${titlesOfTimeSpan.join(', ')}.`)
+  }
+
+  /**
    * Filter the games in the library depending on the chosen grade.
    * Note: Although the grade scope can differ with your data the default is set to 1-5.
    *
@@ -100,11 +117,15 @@ export class MyFavouriteGames {
         break
       }
       default:
-        console.log('This scope is not supported.\n')
+        console.log('This grade scope is not supported.\n')
     }
   }
 
-  // Loopa igenom och hitta länder. Hur många? Vilka spel?
+  // Median
+  // Mode
+  // Serie! Filter.
+  // Validera indata.
   // Loopa igenom och hitta efter genre. Tabell!
   // Plocka ut spel baserade på tidsspann.
+  // Loopa igenom och hitta länder. Hur många? Vilka spel? KÄNNS INTE SÅ KUL?!
 }
