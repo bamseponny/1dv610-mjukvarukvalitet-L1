@@ -1,52 +1,53 @@
 /**
- * Module for the MyFavouriteGames class.
+ * Module for the MyFavouriteThings class.
  *
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import videoGameLibrary from './database.js'
+import library from './database.js'
 
 /**
- * Represents a MyFavouriteGames class.
+ * Represents a MyFavouriteThings class.
  *
- * @class My Favourite Games
+ * @class My Favourite Things
  */
-export class MyFavouriteGames {
+export class MyFavouriteThings {
   /**
-   * Creates an instance of MyFavouriteGames.
+   * Creates an instance of MyFavouriteThings.
    */
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
+    this.myfavouriteThings = 'video games'
   }
 
   /**
-   * List the complete database of video games.
+   * List the complete database of favourite things.
    */
   listDatabase () {
-    console.table(videoGameLibrary)
+    console.table(library)
     console.log('\n')
   }
 
   /**
-   * Get all games from a certain time span.
+   * Get all favourite things from a certain time span.
    *
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
    */
-  listGamesByTimeSpan (startYear, endYear) {
+  listByTimeSpan (startYear, endYear) {
     const titlesOfTimeSpan = []
-    for (const element of videoGameLibrary) {
+    for (const element of library) {
       if (element.releaseYear >= startYear && element.releaseYear <= endYear) {
         titlesOfTimeSpan.push(element.title)
       }
     }
-    console.log(`The games in your library between years ${startYear} and ${endYear} are ${titlesOfTimeSpan.join(', ')}.`)
+    console.log(`The ${this.myfavouriteThings} in your library between years ${startYear} and ${endYear} are ${titlesOfTimeSpan.join(', ')}.`)
   }
 
   /**
-   * Filter the games in the library depending on the chosen grade.
-   * Note: Although the grade scope can differ with your data the default is set to 1-5.
+   * Filter the favourite things in the library depending on the chosen grade.
+   * NOTE: Although the grade scope can differ with your data the default is set to 1-5.
    *
    * @param {number} grade - Chosen grade.
    */
@@ -54,28 +55,27 @@ export class MyFavouriteGames {
     if (grade < this.minimumGrade || grade > this.maximumGrade || typeof grade !== 'number') {
       console.log(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
     } else {
-      const filterTheGames = videoGameLibrary.filter((gameLibrary) => gameLibrary.grade === grade)
+      const filterTheThings = library.filter((listOfThings) => listOfThings.grade === grade)
 
-      if (filterTheGames.length === 0) {
-        console.log(`No games to show with the grade ${grade}.\n`)
+      if (filterTheThings.length === 0) {
+        console.log(`No ${this.myfavouriteThings} to show with the grade ${grade}.\n`)
       } else {
-        const titles = filterTheGames.map(grade => grade.title).sort()
+        const titles = filterTheThings.map(grade => grade.title).sort()
         const resultString = titles.join(', ')
-        console.log(`The games with the grade ${grade} in your collection are ${resultString}.\n`)
+        console.log(`The ${this.myfavouriteThings} with the grade ${grade} in your collection are ${resultString}.\n`)
       }
     }
   }
 
   /**
    * Filter out the pure grades (numbers in a certain scope, 1-5, 1-100, etc) and sort them.
-   * A function which primarly is being used by other functions.
    *
    * @returns {number[]} numbers - Returns an array of numbers.
    */
-  getGrades () {
-    let gradesArray = Array.from(videoGameLibrary)
+  getAllGrades () {
+    let gradesArray = Array.from(library)
     this.validateArray(gradesArray)
-    gradesArray = videoGameLibrary.map(element => element.grade)
+    gradesArray = library.map(element => element.grade)
     return gradesArray.sort((a, b) => a - b)
   }
 
@@ -83,7 +83,7 @@ export class MyFavouriteGames {
    * Calculates the average of an array with numbers.
    */
   calculateAverage () {
-    const averageArray = this.getGrades()
+    const averageArray = this.getAllGrades()
     const average = averageArray.reduce((a, b) => (a + b)) / averageArray.length
     console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
   }
@@ -92,7 +92,7 @@ export class MyFavouriteGames {
    * Calculates the median of an array with numbers.
    */
   calculateMedian () {
-    const medianArray = this.getGrades()
+    const medianArray = this.getAllGrades()
     const medianIndex = Math.floor(medianArray.length / 2)
 
     const median = medianArray.length % 2 === 1 ? medianArray[medianIndex] : (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
@@ -103,7 +103,7 @@ export class MyFavouriteGames {
    * Calculates the mode of an array with numbers.
    */
   calculateMode () {
-    const modeArray = this.getGrades()
+    const modeArray = this.getAllGrades()
 
     const freq = {}
     let maxFreq = 0
@@ -172,7 +172,7 @@ export class MyFavouriteGames {
    *
    * @param {number[]} array - Array of objects.
    */
-  #validateArray (array) {
+  validateArray (array) {
     if (!Array.isArray(array)) {
       throw TypeError('The passed argument is not an array.')
     } else if (array.length === 0) {
@@ -183,5 +183,4 @@ export class MyFavouriteGames {
   // Serie! Filter.
   // Validera indata.
   // Loopa igenom och hitta efter genre. Tabell!
-  // Plocka ut spel baserade på tidsspann.
 }

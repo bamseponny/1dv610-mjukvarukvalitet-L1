@@ -1,4 +1,4 @@
-export const videoGameLibrary = [
+export const library = [
   {
     title: 'Horizon Forbidden West',
     format: 'Playstation 5',
@@ -73,4 +73,4 @@ export const videoGameLibrary = [
   }
 ]
 
-export default videoGameLibrary
+export default library
