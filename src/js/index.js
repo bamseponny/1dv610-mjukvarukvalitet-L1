@@ -22,11 +22,27 @@ export class MyFavouriteThings {
   }
 
   /**
-   * List the complete database of favourite things.
+   * List the complete database of favourite things in alphabetical order.
+   *
    */
   listDatabase () {
-    console.table(library)
-    console.log('\n')
+    library.sort((a, b) => {
+      const titleA = a.title
+      const titleB = b.title
+      let compare = 0
+
+      if (titleA < titleB) {
+        compare = -1
+      }
+      if (titleA > titleB) {
+        compare = 1
+      }
+      return compare
+    })
+
+    library.forEach((e) => {
+      console.log(`${e.title} *** FORMAT: ${e.format} *** RELEASE YEAR: ${e.releaseYear} *** GRADE: ${e.grade} of ${this.maximumGrade}`)
+    })
   }
 
   /**
@@ -42,7 +58,8 @@ export class MyFavouriteThings {
         titlesOfTimeSpan.push(element.title)
       }
     }
-    console.log(`The ${this.myfavouriteThings} in your library between years ${startYear} and ${endYear} are ${titlesOfTimeSpan.join(', ')}.`)
+    console.log(`The ${this.myfavouriteThings} in your library between years ${startYear} and ${endYear} are:`)
+    console.log(`${titlesOfTimeSpan.sort().join(', \n')} \n`)
   }
 
   /**
@@ -96,7 +113,7 @@ export class MyFavouriteThings {
     const medianIndex = Math.floor(medianArray.length / 2)
 
     const median = medianArray.length % 2 === 1 ? medianArray[medianIndex] : (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
-    console.log(`The median of the grade is ${median}.`)
+    console.log(`The median of the grade is ${median}.\n`)
   }
 
   /**
@@ -181,6 +198,5 @@ export class MyFavouriteThings {
   }
 
   // Serie! Filter.
-  // Validera indata.
   // Loopa igenom och hitta efter genre. Tabell!
 }
