@@ -24,7 +24,8 @@ export class MyFavouriteGames {
    * List the complete database of video games.
    */
   listDatabase () {
-    console.log(videoGameLibrary, '\n')
+    console.table(videoGameLibrary)
+    console.log('\n')
   }
 
   /**
@@ -37,7 +38,6 @@ export class MyFavouriteGames {
     const titlesOfTimeSpan = []
     for (const element of videoGameLibrary) {
       if (element.releaseYear >= startYear && element.releaseYear <= endYear) {
-        /* console.log(element.title) */
         titlesOfTimeSpan.push(element.title)
       }
     }
@@ -67,23 +67,36 @@ export class MyFavouriteGames {
   }
 
   /**
-   * Filter out the pure grades (numbers in a certain scope, 1-5, 1-100, etc).
+   * Filter out the pure grades (numbers in a certain scope, 1-5, 1-100, etc) and sort them.
    * A function which primarly is being used by other functions.
    *
    * @returns {number[]} numbers - Returns an array of numbers.
    */
   getGrades () {
+    // Felhantering.
     const gradesArray = videoGameLibrary.map(element => element.grade)
-    return gradesArray
+    return gradesArray.sort((a, b) => a - b)
   }
 
   /**
-   * Returns the average of an array with numbers.
+   * Calculates the average of an array with numbers.
    */
-  getAverage () {
+  calculateAverage () {
     const averageArray = this.getGrades()
     const average = averageArray.reduce((a, b) => (a + b)) / averageArray.length
     console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
+  }
+
+  /**
+   * Calculates the median of an array with number.
+   */
+  calculateMedian () {
+    const medianArray = this.getGrades()
+    console.log(medianArray)
+    const medianIndex = Math.floor(medianArray.length / 2)
+
+    const median = medianArray.length % 2 === 1 ? medianArray[medianIndex] : (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
+    console.log(`The median of the grade is ${median}.`)
   }
 
   /**
@@ -121,11 +134,9 @@ export class MyFavouriteGames {
     }
   }
 
-  // Median
   // Mode
   // Serie! Filter.
   // Validera indata.
   // Loopa igenom och hitta efter genre. Tabell!
   // Plocka ut spel baserade på tidsspann.
-  // Loopa igenom och hitta länder. Hur många? Vilka spel? KÄNNS INTE SÅ KUL?!
 }
