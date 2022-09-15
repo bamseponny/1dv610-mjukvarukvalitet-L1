@@ -62,6 +62,14 @@ export const videoGameLibrary = [
     genre: 'RPG',
     series: 'Star Wars: Knights of the Old Republic',
     grade: 3
+  },
+  {
+    title: 'Enslaved: Odyssey to the West',
+    format: 'Xbox 360',
+    releaseYear: 2010,
+    genre: 'Action',
+    series: '',
+    grade: 4
   }
 ]
 

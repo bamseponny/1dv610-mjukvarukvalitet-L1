@@ -73,8 +73,9 @@ export class MyFavouriteGames {
    * @returns {number[]} numbers - Returns an array of numbers.
    */
   getGrades () {
-    // Felhantering.
-    const gradesArray = videoGameLibrary.map(element => element.grade)
+    let gradesArray = Array.from(videoGameLibrary)
+    this.validateArray(gradesArray)
+    gradesArray = videoGameLibrary.map(element => element.grade)
     return gradesArray.sort((a, b) => a - b)
   }
 
@@ -88,15 +89,47 @@ export class MyFavouriteGames {
   }
 
   /**
-   * Calculates the median of an array with number.
+   * Calculates the median of an array with numbers.
    */
   calculateMedian () {
     const medianArray = this.getGrades()
-    console.log(medianArray)
     const medianIndex = Math.floor(medianArray.length / 2)
 
     const median = medianArray.length % 2 === 1 ? medianArray[medianIndex] : (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
     console.log(`The median of the grade is ${median}.`)
+  }
+
+  /**
+   * Calculates the mode of an array with numbers.
+   */
+  calculateMode () {
+    const modeArray = this.getGrades()
+
+    const freq = {}
+    let maxFreq = 0
+    const modes = []
+
+    for (const num in modeArray) {
+      freq[modeArray[num]] = (freq[modeArray[num]] || 0) + 1
+
+      if (freq[modeArray[num]] > maxFreq) {
+        maxFreq = freq[modeArray[num]]
+      }
+    }
+
+    for (const key in freq) {
+      if (freq[key] === maxFreq) {
+        modes.push(key)
+      }
+    }
+
+    const parsedModes = modes.map(string => Number(string))
+
+    if (parsedModes.length === 1) {
+      console.log(`The most frequent value of all the grades is ${parsedModes}.\n`)
+    } else if (parsedModes.length > 1) {
+      console.log(`The most frequent values of all the grades are ${parsedModes.join(', ')}.\n`)
+    }
   }
 
   /**
@@ -134,7 +167,19 @@ export class MyFavouriteGames {
     }
   }
 
-  // Mode
+  /**
+   * Validate if the array satisfies the demands.
+   *
+   * @param {number[]} array - Array of objects.
+   */
+  #validateArray (array) {
+    if (!Array.isArray(array)) {
+      throw TypeError('The passed argument is not an array.')
+    } else if (array.length === 0) {
+      throw Error('The passed array contains no elements.')
+    }
+  }
+
   // Serie! Filter.
   // Validera indata.
   // Loopa igenom och hitta efter genre. Tabell!
