@@ -40,8 +40,8 @@ export class MyFavouriteThings {
       return compare
     })
 
-    library.forEach((e) => {
-      console.log(`${e.title} *** FORMAT: ${e.format} *** RELEASE YEAR: ${e.releaseYear} *** GRADE: ${e.grade} of ${this.maximumGrade}`)
+    library.forEach((element) => {
+      console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade}`)
     })
   }
 
@@ -60,6 +60,84 @@ export class MyFavouriteThings {
     }
     console.log(`The ${this.myfavouriteThings} in your library between years ${startYear} and ${endYear} are:`)
     console.log(`${titlesOfTimeSpan.sort().join(', \n')} \n`)
+  }
+
+  /**
+   * Filter the favourite things in the library depending on the chosen data type and data value. 
+   *
+   * @param {string} dataType - Chosen data type.
+   * @param {*} dataValue - Chosen data value.
+   */
+  filterByData (dataType, dataValue) {
+    if (dataType !== undefined) {
+      switch (dataType) {
+        case 'format': {
+          const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
+
+          if (filterTheLibrary.length === 0) {
+            console.log(`No ${this.myfavouriteThings} of this ${dataType}.\n`)
+          } else {
+            const formatCounter = filterTheLibrary.map(format => format.title).sort()
+            const resultString = formatCounter.join(', ')
+            console.log(`The ${this.myfavouriteThings} on ${dataValue} in your collection are ${resultString}.\n`)
+          }
+          break
+        }
+        case 'releaseYear': {
+          const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
+
+          if (filterTheLibrary.length === 0) {
+            console.log(`No ${this.myfavouriteThings} from this ${dataType.slice(7, 11).toLocaleLowerCase()} to show.\n`)
+          } else {
+            const formatCounter = filterTheLibrary.map(format => format.title).sort()
+            const resultString = formatCounter.join(', ')
+            console.log(`The ${this.myfavouriteThings} from ${dataValue} in your collection are ${resultString}.\n`)
+          }
+          break
+        }
+        case 'grade': {
+          if (dataValue < this.minimumGrade || dataValue > this.maximumGrade || typeof dataValue !== 'number') {
+            console.log(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
+          } else {
+            const filterTheThings = library.filter((listOfThings) => listOfThings.grade === dataValue)
+
+            if (filterTheThings.length === 0) {
+              console.log(`No ${this.myfavouriteThings} to show with the grade ${dataValue}.\n`)
+            } else {
+              const titles = filterTheThings.map(grade => grade.title).sort()
+              const resultString = titles.join(', ')
+              console.log(`The ${this.myfavouriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`)
+            }
+          }
+          break
+        }
+        default:
+          console.log('This data type is not supported.\n')
+      }
+    } else {
+      throw Error('Please pass a valid data type.')
+    }
+  }
+
+  /**
+   * Filter the favourite things in the library depending on the chosen format.
+   *
+   * @param {string} format - Chosen format.
+   */
+  filterByFormat (format) {
+    if (format !== undefined) {
+      const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === format)
+
+      if (filterTheLibrary.length === 0) {
+        console.log(`No ${this.myfavouriteThings} of this format.\n`)
+      } else {
+        const formatCounter = filterTheLibrary.map(format => format.title).sort()
+        const resultString = formatCounter.join(', ')
+        console.log(`The ${this.myfavouriteThings} on ${format} in your collection are ${resultString}.\n`)
+      }
+    } else {
+      throw Error('Please pass a valid string.')
+    }
   }
 
   /**
@@ -196,7 +274,4 @@ export class MyFavouriteThings {
       throw Error('The passed array contains no elements.')
     }
   }
-
-  // Serie! Filter.
-  // Loopa igenom och hitta efter genre. Tabell!
 }
