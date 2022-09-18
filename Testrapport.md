@@ -1,9 +1,22 @@
 # Testrapport
 
 Målet med detta dokument är att skapa överblick över testningen i laboration 1 till kursen 1dv610 på Linnéuniversitetet och dokumentera de enskilda testerna. Samtliga tester sker mot version 1 av projektet.
+***
 
 ## Manuell testning
-Use cases
+
+| User cases| Status|       
+| --------- |:-----:|
+| UC 1      | ✅ |
+| UC 2      | ✅ |
+| UC 3      | ✅ |
+| UC 4      | ✅ |
+| UC 5      | ✅ |
+| UC 6      | ✅ |
+| UC 7      | ✅ |
+| UC 8      | ✅ |
+***
+
 
 ## Förberedelser
 1. Installera biblioteket genom *"npm install"*.
