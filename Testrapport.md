@@ -12,6 +12,13 @@ Use cases
 ```bash
 import library from './test-database.js'
 ```
+
+3. Ändra myFavouriteThings till *'test objects'* i klassen My Favorite Things.
+
+```bash
+this.myfavouriteThings = 'test objects'
+```
+
 ***
 ### UC1 – Lista samtliga titlar
 
@@ -56,34 +63,34 @@ titleF
 
 ### UC3 – Sök efter en eller flera titlar
 
-**Beskrivning:** 
+**Beskrivning:** Söker efter en eller flera titlar baserat på sträng som skickas in som argument.
 
-**Testinstruktion:**
+**Testinstruktion:** Kalla på metoden *findTitles* från modulen *testApp*. Skicka in argumentet *A*.
 
 ```bash
-
+testApp.findTitles('A')
 ```
 
 **Förväntat utfall:**
 
 ```bash
-
+The titles found in the library with passed "A" is: titleA, titleAb.
 ```
 
 ### UC4 – Filtrera efter datatyp och datavärde
 
-**Beskrivning:** 
+**Beskrivning:** Filtrerar databasen baserat på två argument: datatyp, datavärde.
 
-**Testinstruktion:**
+**Testinstruktion:** Kalla på metoden *filterByData* från modulen *testApp*. Skicka in argumenten *grade, 3*. Vi ska alltså filtrera ut titlarna med betyget 3.
 
 ```bash
-
+testApp.filterByData('grade', 3)
 ```
 
 **Förväntat utfall:**
 
 ```bash
-
+The test objects with the grade 3 in your collection are titleA, titleD.
 ```
 
 ### UC5 – Räkna ut medelvärdet av betygen

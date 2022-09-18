@@ -18,7 +18,7 @@ export class MyFavoriteThings {
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
-    this.myfavouriteThings = 'video games'
+    this.myfavouriteThings = 'test objects'
   }
 
   /**

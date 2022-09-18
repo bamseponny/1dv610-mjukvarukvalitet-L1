@@ -10,11 +10,11 @@ const testApp = new MyFavoriteThings()
 
 testApp.listAllTitles()
 testApp.listByTimeSpan(2015, 2020)
-testApp.findTitles('Part')
+testApp.findTitles('A')
 
 testApp.getAllGrades()
 
-testApp.filterByData('grade', 4)
+testApp.filterByData('grade', 3)
 
 testApp.calculateAverage()
 testApp.calculateMedian()
