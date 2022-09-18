@@ -1,15 +1,17 @@
-import { MyFavouriteThings } from './index.js'
+import { MyFavoriteThings } from './index.js'
 
-const testApp = new MyFavouriteThings()
+const testApp = new MyFavoriteThings()
 
-/* testApp.listDatabase()
-testApp.filterGrade(4)
-testApp.getAllGrades()
-testApp.calculateAverage()
-testApp.gradeConverter(100, 28)
-testApp.listByTimeSpan(2000, 2022)
-testApp.calculateMedian()
-testApp.calculateMode()
-testApp.filterByFormat('Playstation 5') */
+testApp.listAllTitles()
+/* testApp.listByTimeSpan(2000, 2022)
+testApp.findOneTitle('Last') */
+
+/* testApp.getAllGrades()
 
 testApp.filterByData('grade', 3)
+
+testApp.calculateAverage()
+testApp.calculateMedian()
+testApp.calculateMode()
+
+testApp.gradeConverter(100, 28) */

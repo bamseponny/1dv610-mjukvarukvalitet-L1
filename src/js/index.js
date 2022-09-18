@@ -1,5 +1,5 @@
 /**
- * Module for the MyFavouriteThings class.
+ * Module for the MyFavoriteThings class.
  *
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
@@ -7,13 +7,13 @@
 import library from './database.js'
 
 /**
- * Represents a MyFavouriteThings class.
+ * Represents a MyFavoriteThings class.
  *
- * @class My Favourite Things
+ * @class My Favorite Things
  */
-export class MyFavouriteThings {
+export class MyFavoriteThings {
   /**
-   * Creates an instance of MyFavouriteThings.
+   * Creates an instance of MyFavoriteThings.
    */
   constructor () {
     this.minimumGrade = 1
@@ -22,10 +22,10 @@ export class MyFavouriteThings {
   }
 
   /**
-   * List the complete database of favourite things in alphabetical order.
+   * List the complete database of favorite things in alphabetical order.
    *
    */
-  listDatabase () {
+  listAllTitles () {
     library.sort((a, b) => {
       const titleA = a.title
       const titleB = b.title
@@ -46,7 +46,7 @@ export class MyFavouriteThings {
   }
 
   /**
-   * Get all favourite things from a certain time span.
+   * Get all favorite things from a certain time span.
    *
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
@@ -63,7 +63,22 @@ export class MyFavouriteThings {
   }
 
   /**
-   * Filter the favourite things in the library depending on the chosen data type and data value. 
+   * Find one title or series in the library based on a passed string.
+   *
+   * @param {string} title - Passed string.
+   */
+  findOneTitle (title) {
+    console.log(library[1].title)
+    for (let i = 0; i < library.length; i++) {
+      console.log(i)
+      if (library[i].title.includes('title')) {
+        console.log(i.title)
+      }
+    }
+  }
+
+  /**
+   * Filter the favorite things in the library depending on the chosen data type and data value.
    *
    * @param {string} dataType - Chosen data type.
    * @param {*} dataValue - Chosen data value.
@@ -116,49 +131,6 @@ export class MyFavouriteThings {
       }
     } else {
       throw Error('Please pass a valid data type.')
-    }
-  }
-
-  /**
-   * Filter the favourite things in the library depending on the chosen format.
-   *
-   * @param {string} format - Chosen format.
-   */
-  filterByFormat (format) {
-    if (format !== undefined) {
-      const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === format)
-
-      if (filterTheLibrary.length === 0) {
-        console.log(`No ${this.myfavouriteThings} of this format.\n`)
-      } else {
-        const formatCounter = filterTheLibrary.map(format => format.title).sort()
-        const resultString = formatCounter.join(', ')
-        console.log(`The ${this.myfavouriteThings} on ${format} in your collection are ${resultString}.\n`)
-      }
-    } else {
-      throw Error('Please pass a valid string.')
-    }
-  }
-
-  /**
-   * Filter the favourite things in the library depending on the chosen grade.
-   * NOTE: Although the grade scope can differ with your data the default is set to 1-5.
-   *
-   * @param {number} grade - Chosen grade.
-   */
-  filterGrade (grade) {
-    if (grade < this.minimumGrade || grade > this.maximumGrade || typeof grade !== 'number') {
-      console.log(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
-    } else {
-      const filterTheThings = library.filter((listOfThings) => listOfThings.grade === grade)
-
-      if (filterTheThings.length === 0) {
-        console.log(`No ${this.myfavouriteThings} to show with the grade ${grade}.\n`)
-      } else {
-        const titles = filterTheThings.map(grade => grade.title).sort()
-        const resultString = titles.join(', ')
-        console.log(`The ${this.myfavouriteThings} with the grade ${grade} in your collection are ${resultString}.\n`)
-      }
     }
   }
 
