@@ -52,6 +52,14 @@ export const library = [
     genre: 'genreA',
     series: 'SerieA',
     grade: 3
+  },
+  {
+    title: 'titleCc',
+    format: 'formatB',
+    releaseYear: 2002,
+    genre: 'genreA',
+    series: 'SerieA',
+    grade: 5
   }
 ]
 

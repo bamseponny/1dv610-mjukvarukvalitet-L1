@@ -20,4 +20,4 @@ testApp.calculateAverage()
 testApp.calculateMedian()
 testApp.calculateMode()
 
-testApp.convertGrade(100, 28)
+testApp.convertGrade(100, 37)
