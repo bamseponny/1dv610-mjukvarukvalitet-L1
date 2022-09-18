@@ -1,3 +1,9 @@
+/**
+ * Module for the database.
+ *
+ * @author Fredrik Eriksson <ferth09@student.lnu.se>
+ */
+
 /* export const library = [
   {
     title: 'titleB',

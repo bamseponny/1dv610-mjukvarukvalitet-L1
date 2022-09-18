@@ -9,7 +9,7 @@ import { MyFavoriteThings } from './my-favorite-things.js'
 const testApp = new MyFavoriteThings()
 
 testApp.listAllTitles()
-testApp.listByTimeSpan(2010, 2013)
+testApp.listByTimeSpan(2015, 2020)
 testApp.findTitles('Part')
 
 testApp.getAllGrades()
