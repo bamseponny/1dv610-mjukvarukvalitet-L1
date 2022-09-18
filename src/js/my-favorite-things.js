@@ -40,9 +40,11 @@ export class MyFavoriteThings {
       return compare
     })
 
+    console.log(`A complete list of ${this.myfavouriteThings} in the library:`)
     library.forEach((element) => {
       console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade}`)
     })
+    console.log('\n')
   }
 
   /**
@@ -75,11 +77,11 @@ export class MyFavoriteThings {
       }
     }
     if (arrayOfTitles.length < 1) {
-      console.log(`No titles in the library  to show with passed "${title}".`)
+      console.log(`No titles in the library  to show with passed "${title}".\n`)
     } else if (arrayOfTitles.length === 1) {
-      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.`)
+      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.\n`)
     } else {
-      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.`)
+      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.\n`)
     }
   }
 
