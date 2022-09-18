@@ -63,17 +63,23 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Find one title or series in the library based on a passed string.
+   * Find titles in the library based on a passed string.
    *
    * @param {string} title - Passed string.
    */
-  findOneTitle (title) {
-    console.log(library[1].title)
+  findTitles (title) {
+    const arrayOfTitles = []
     for (let i = 0; i < library.length; i++) {
-      console.log(i)
-      if (library[i].title.includes('title')) {
-        console.log(i.title)
+      if (library[i].title.includes(title)) {
+        arrayOfTitles.push(library[i].title)
       }
+    }
+    if (arrayOfTitles.length < 1) {
+      console.log(`No titles in the library  to show with passed "${title}".`)
+    } else if (arrayOfTitles.length === 1) {
+      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.`)
+    } else {
+      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.`)
     }
   }
 
@@ -206,7 +212,7 @@ export class MyFavoriteThings {
    * @param {*} oldMax - The max of the old grade.
    * @param {*} oldGrade - The old grade, to be converted.
    */
-  gradeConverter (oldMax, oldGrade) {
+  convertGrade (oldMax, oldGrade) {
     switch (oldMax) {
       case 100: {
         const newGrade = Math.round(oldGrade / 100 * 5)
