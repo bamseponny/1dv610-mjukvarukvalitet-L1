@@ -5,16 +5,16 @@ Målet med detta dokument är att skapa överblick över testningen i laboration
 
 ## Manuell testning
 
-| User cases| Status|       
-| --------- |:-----:|
-| UC 1      | ✅ |
-| UC 2      | ✅ |
-| UC 3      | ✅ |
-| UC 4      | ✅ |
-| UC 5      | ✅ |
-| UC 6      | ✅ |
-| UC 7      | ✅ |
-| UC 8      | ✅ |
+| User cases| Testmetod | Status|       
+| --------- |:---------:|:-----:|
+| UC 1      | Manuell   |✅ |
+| UC 2      | Manuell   |✅ |
+| UC 3      | Manuell   |✅ |
+| UC 4      | Manuell   |✅ |
+| UC 5      | Manuell   |✅ |
+| UC 6      | Manuell   |✅ |
+| UC 7      | Manuell   |✅ |
+| UC 8      | Manuell   |✅ |
 ***
 
 
