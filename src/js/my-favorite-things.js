@@ -156,8 +156,8 @@ export class MyFavoriteThings {
     const averageArray = this.getAllGrades()
     let total = 0
 
-    for (const oneNumber of averageArray) {
-      total = total + oneNumber
+    for (let i = 0; i < averageArray.length; i++) {
+      total = total + averageArray[i]
     }
 
     const average = total / averageArray.length
@@ -185,6 +185,7 @@ export class MyFavoriteThings {
 
   /**
    * Calculates the mode of an array with numbers.
+   * Code credit: my own solution in 1DV025, assignment A2.
    */
   calculateMode () {
     const modeArray = Array.from(this.getAllGrades())
