@@ -8,16 +8,16 @@ import { MyFavoriteThings } from './my-favorite-things.js'
 
 const testApp = new MyFavoriteThings()
 
-testApp.listAllTitles()
+/* testApp.listAllTitles()
 testApp.listByTimeSpan(2015, 2020)
-testApp.findTitles('A')
+testApp.findTitles('T')
 
 testApp.getAllGrades()
 
-testApp.filterByData('grade', 3)
+testApp.filterByData('releaseYear', 2023) */
 
 testApp.calculateAverage()
-testApp.calculateMedian()
+/* testApp.calculateMedian()
 testApp.calculateMode()
 
-testApp.convertGrade(100, 37)
+testApp.convertGrade(100, 37) */

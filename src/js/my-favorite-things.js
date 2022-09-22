@@ -29,9 +29,9 @@ export class MyFavoriteThings {
     library.sort((a, b) => {
       const titleA = a.title
       const titleB = b.title
+      let compare
 
-      let compare = 0
-      titleA < titleB ? (compare = -1) : (compare = 1)
+      titleA.toUpperCase() < titleB.toUpperCase() ? (compare = -1) : (compare = 1)
       return compare
     })
 
@@ -67,7 +67,7 @@ export class MyFavoriteThings {
   findTitles (title) {
     const arrayOfTitles = []
     for (let i = 0; i < library.length; i++) {
-      if (library[i].title.includes(title)) {
+      if (library[i].title.toLowerCase().includes(title.toLowerCase())) {
         arrayOfTitles.push(library[i].title)
       }
     }
@@ -105,7 +105,7 @@ export class MyFavoriteThings {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
 
           if (!filterTheLibrary.length) {
-            console.log(`No ${this.myfavouriteThings} from this ${dataType.slice(7, 11).toLocaleLowerCase()} to show.\n`)
+            console.log(`No ${this.myfavouriteThings} from this ${dataType.slice(7, 11).toLowerCase()} to show.\n`)
           } else {
             const formatCounter = filterTheLibrary.map(format => format.title).sort()
             const resultString = formatCounter.join(', ')
@@ -154,7 +154,14 @@ export class MyFavoriteThings {
    */
   calculateAverage () {
     const averageArray = this.getAllGrades()
-    const average = averageArray.reduce((num1, num2) => (num1 + num2)) / averageArray.length
+    let total = 0
+
+    for (const oneNumber of averageArray) {
+      total = total + oneNumber
+    }
+
+    const average = total / averageArray.length
+
     console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
   }
 
@@ -251,9 +258,9 @@ export class MyFavoriteThings {
    */
   validateArray (array) {
     if (!Array.isArray(array)) {
-      throw TypeError('The passed argument is not an array.')
+      throw new Error('The passed argument is not an array.')
     } else if (!array.length) {
-      throw Error('The passed array contains no elements.')
+      throw new Error('The passed array contains no elements.')
     }
   }
 }
