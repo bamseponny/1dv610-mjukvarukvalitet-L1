@@ -4,7 +4,7 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './test-database.js'
+import library from './database.js'
 
 /**
  * Represents a MyFavoriteThings class.
@@ -29,14 +29,9 @@ export class MyFavoriteThings {
     library.sort((a, b) => {
       const titleA = a.title
       const titleB = b.title
-      let compare = 0
 
-      if (titleA < titleB) {
-        compare = -1
-      }
-      if (titleA > titleB) {
-        compare = 1
-      }
+      let compare = 0
+      titleA < titleB ? (compare = -1) : (compare = 1)
       return compare
     })
 
@@ -97,7 +92,7 @@ export class MyFavoriteThings {
         case 'format': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
 
-          if (filterTheLibrary.length === 0) {
+          if (!filterTheLibrary.length) {
             console.log(`No ${this.myfavouriteThings} of this ${dataType}.\n`)
           } else {
             const formatCounter = filterTheLibrary.map(format => format.title).sort()
@@ -109,7 +104,7 @@ export class MyFavoriteThings {
         case 'releaseYear': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
 
-          if (filterTheLibrary.length === 0) {
+          if (!filterTheLibrary.length) {
             console.log(`No ${this.myfavouriteThings} from this ${dataType.slice(7, 11).toLocaleLowerCase()} to show.\n`)
           } else {
             const formatCounter = filterTheLibrary.map(format => format.title).sort()
@@ -124,7 +119,7 @@ export class MyFavoriteThings {
           } else {
             const filterTheThings = library.filter((listOfThings) => listOfThings.grade === dataValue)
 
-            if (filterTheThings.length === 0) {
+            if (!filterTheThings.length) {
               console.log(`No ${this.myfavouriteThings} to show with the grade ${dataValue}.\n`)
             } else {
               const titles = filterTheThings.map(grade => grade.title).sort()
@@ -150,8 +145,8 @@ export class MyFavoriteThings {
   getAllGrades () {
     let gradesArray = Array.from(library)
     this.validateArray(gradesArray)
-    gradesArray = library.map(element => element.grade)
-    return gradesArray.sort((a, b) => a - b)
+    gradesArray = library.map(dataBase => dataBase.grade)
+    return gradesArray.sort((num1, num2) => num1 - num2)
   }
 
   /**
@@ -159,7 +154,7 @@ export class MyFavoriteThings {
    */
   calculateAverage () {
     const averageArray = this.getAllGrades()
-    const average = averageArray.reduce((a, b) => (a + b)) / averageArray.length
+    const average = averageArray.reduce((num1, num2) => (num1 + num2)) / averageArray.length
     console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
   }
 
@@ -167,10 +162,17 @@ export class MyFavoriteThings {
    * Calculates the median of an array with numbers.
    */
   calculateMedian () {
-    const medianArray = this.getAllGrades()
-    const medianIndex = Math.floor(medianArray.length / 2)
+    const medianArray = Array.from(this.getAllGrades())
+    let median
 
-    const median = medianArray.length % 2 === 1 ? medianArray[medianIndex] : (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
+    if (medianArray.length % 2 !== 0) {
+      const medianIndex = Math.floor(medianArray.length / 2)
+      median = medianArray[medianIndex]
+    } else {
+      const medianIndex = Math.floor(medianArray.length / 2)
+      median = (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
+    }
+
     console.log(`The median of the grade is ${median}.\n`)
   }
 
@@ -178,10 +180,10 @@ export class MyFavoriteThings {
    * Calculates the mode of an array with numbers.
    */
   calculateMode () {
-    const modeArray = this.getAllGrades()
+    const modeArray = Array.from(this.getAllGrades())
 
     const freq = {}
-    let maxFreq = 0
+    let maxFreq
     const modes = []
 
     for (const num in modeArray) {
@@ -250,7 +252,7 @@ export class MyFavoriteThings {
   validateArray (array) {
     if (!Array.isArray(array)) {
       throw TypeError('The passed argument is not an array.')
-    } else if (array.length === 0) {
+    } else if (!array.length) {
       throw Error('The passed array contains no elements.')
     }
   }

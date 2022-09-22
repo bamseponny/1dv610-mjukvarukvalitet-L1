@@ -1,5 +1,5 @@
 /**
- * Module for the database.
+ * Module for the test database.
  *
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */

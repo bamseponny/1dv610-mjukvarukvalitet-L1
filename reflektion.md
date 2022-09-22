@@ -10,7 +10,7 @@ Jag håller inte med boken i alla avseenden, dock. Clean Code säger att switch-
 
 > It’s hard to make a small switch statement. Even a switch statement with only two cases is larger than I’d like a single block or function to be. It’s also hard to make a switch statement that does one thing. By their nature, switch statements always do N things.
 
-Jag tycker att boken har en poäng, men också att tydlighet är viktigt. Jag tror det behövs en balans mellan att vara kortfattad och tydlig. Har läst kod som varit så kort att jag inte förstått vad som händer. I mina fall tyckte jag Switch-satserna premierade tydlighet. Å andra sidan hade jag kunnat bryta ut dem till egna metoder då satserna gjorde att metoderna gjorde mer än en sak.
+Jag tycker att boken har en poäng, men också att tydlighet är viktigt. Jag tror det behövs en balans mellan att vara kortfattad och tydlig. Har läst kod som varit så kort att jag inte förstått vad som händer. I mina fall tyckte jag Switch-satserna premierade tydlighet. Å andra sidan hade jag kunnat bryta ut dem till egna metoder då satserna gjorde att metoderna gjorde mer än en sak. Kort sagt: har fått tänka till över min kod på ett helt nytt sätt.
 
 ## Clean Code, kapitel 2: meningsfulla namn
 
