@@ -11,7 +11,8 @@ export const library = [
     releaseYear: 2022,
     genre: 'Action',
     series: 'Horizon',
-    grade: 5
+    grade: 5,
+    hoursPlayed: 88
   },
   {
     title: 'The Last of Us Part II',
@@ -19,7 +20,8 @@ export const library = [
     releaseYear: 2020,
     genre: 'Action',
     series: 'The Last of Us',
-    grade: 4
+    grade: 4,
+    hoursPlayed: 30
   },
   {
     title: 'The Last of Us Part I',
@@ -27,7 +29,8 @@ export const library = [
     releaseYear: 2022,
     genre: 'Action',
     series: 'The Last of Us',
-    grade: 4
+    grade: 4,
+    hoursPlayed: 16
   },
   {
     title: 'Paper Mario',
@@ -35,7 +38,8 @@ export const library = [
     releaseYear: 2001,
     genre: 'RPG',
     series: 'Paper Mario',
-    grade: 4
+    grade: 3,
+    hoursPlayed: 27
   },
   {
     title: 'Eiyuden Chronicle: Rising',
@@ -43,7 +47,8 @@ export const library = [
     releaseYear: 2022,
     genre: 'RPG',
     series: 'Eiyuden Chronicle',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 20
   },
   {
     title: 'Ratchet & Clank',
@@ -51,7 +56,7 @@ export const library = [
     releaseYear: 2016,
     genre: 'Platform',
     series: 'Ratchet & Clank',
-    grade: 3
+    grade: 16
   },
   {
     title: 'Ni no Kuni: Wrath of the White Witch',
@@ -59,7 +64,8 @@ export const library = [
     releaseYear: 2013,
     genre: 'RPG',
     series: 'Ni no Kuni',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 35
   },
   {
     title: 'Star Wars: Knights of the Old Republic',
@@ -67,7 +73,8 @@ export const library = [
     releaseYear: 2013,
     genre: 'RPG',
     series: 'Star Wars: Knights of the Old Republic',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 88
   },
   {
     title: 'Enslaved: Odyssey to the West',
@@ -75,7 +82,8 @@ export const library = [
     releaseYear: 2010,
     genre: 'Action',
     series: '',
-    grade: 4
+    grade: 4,
+    hoursPlayed: 36
   },
   {
     title: 'Syberia',
@@ -83,7 +91,8 @@ export const library = [
     releaseYear: 2002,
     genre: 'Adventure',
     series: '',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 10
   }
 ]
 

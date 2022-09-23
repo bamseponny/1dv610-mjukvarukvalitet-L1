@@ -11,7 +11,8 @@ export const library = [
     releaseYear: 2022,
     genre: 'genreA',
     series: 'SerieA',
-    grade: 5
+    grade: 5,
+    hoursPlayed: 10
   },
   {
     title: 'titleA',
@@ -19,7 +20,8 @@ export const library = [
     releaseYear: 2020,
     genre: 'genreB',
     series: 'SerieA',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 75
   },
   {
     title: 'titleAb',
@@ -27,7 +29,8 @@ export const library = [
     releaseYear: 2005,
     genre: 'genreC',
     series: 'SerieA',
-    grade: 4
+    grade: 4,
+    hoursPlayed: 22
   },
   {
     title: 'titleC',
@@ -35,7 +38,8 @@ export const library = [
     releaseYear: 1985,
     genre: 'genreB',
     series: 'SerieA',
-    grade: 2
+    grade: 2,
+    hoursPlayed: 7
   },
   {
     title: 'titleF',
@@ -43,7 +47,8 @@ export const library = [
     releaseYear: 2015,
     genre: 'genreB',
     series: 'SerieA',
-    grade: 1
+    grade: 1,
+    hoursPlayed: 13
   },
   {
     title: 'titleD',
@@ -51,7 +56,8 @@ export const library = [
     releaseYear: 2016,
     genre: 'genreA',
     series: 'SerieA',
-    grade: 3
+    grade: 3,
+    hoursPlayed: 37
   },
   {
     title: 'titleCc',
@@ -59,7 +65,8 @@ export const library = [
     releaseYear: 2002,
     genre: 'genreA',
     series: 'SerieA',
-    grade: 5
+    grade: 5,
+    hoursPlayed: 47
   }
 ]
 

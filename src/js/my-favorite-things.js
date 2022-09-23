@@ -18,7 +18,7 @@ export class MyFavoriteThings {
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
-    this.myfavouriteThings = 'test objects'
+    this.myfavouriteThings = 'video games'
   }
 
   /**
@@ -37,7 +37,7 @@ export class MyFavoriteThings {
 
     console.log(`A complete list of ${this.myfavouriteThings} in the library:`)
     library.forEach((element) => {
-      console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade}`)
+      console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
     })
     console.log('\n')
   }
@@ -147,6 +147,18 @@ export class MyFavoriteThings {
     this.validateArray(gradesArray)
     gradesArray = library.map(dataBase => dataBase.grade)
     return gradesArray.sort((num1, num2) => num1 - num2)
+  }
+
+  /**
+   * Filter out the pure hours and sort them.
+   *
+   * @returns {number[]} numbers - Returns an array of numbers.
+   */
+  getAllPlayHours () {
+    let hourArray = Array.from(library)
+    this.validateArray(hourArray)
+    hourArray = library.map(dataBase => dataBase.hoursPlayed)
+    return hourArray.sort((num1, num2) => num1 - num2)
   }
 
   /**
