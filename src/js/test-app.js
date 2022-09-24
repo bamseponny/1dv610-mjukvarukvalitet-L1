@@ -61,5 +61,5 @@ console.log(testApp.calculateModeGrade())
 testApp.printGradeStatistics() */
 
 // Convert an old grade to match the libraries' scope
-console.log(testApp.convertGrade(oldMax, oldGrade))
-testApp.printConvertedGrade(oldMax, oldGrade)
+/* console.log(testApp.convertGrade(oldMax, oldGrade))
+testApp.printConvertedGrade(oldMax, oldGrade) */

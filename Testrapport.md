@@ -7,16 +7,28 @@ Målet med detta dokument är att skapa överblick över testningen i laboration
 
 | User cases| Testmetod | Status|       
 | --------- |:---------:|:-----:|
-| UC 1      | Manuell   |✅ |
-| UC 2      | Manuell   |✅ |
-| UC 3      | Manuell   |✅ |
-| UC 4      | Manuell   |✅ |
-| UC 5      | Manuell   |✅ |
-| UC 6      | Manuell   |✅ |
-| UC 7      | Manuell   |✅ |
-| UC 8      | Manuell   |✅ |
+| UC 1.1    | Manuell   |✅ |
+| UC 1.2    | Manuell   |✅ |
+| UC 2.1    | Manuell   |✅ |
+| UC 2.2    | Manuell   |✅ |
+| UC 3.1    | Manuell   |✅ |
+| UC 3.2    | Manuell   |✅ |
+| UC 4.1    | Manuell   |✅ |
+| UC 4.2    | Manuell   |✅ |
+| UC 5.1    | Manuell   |✅ |
+| UC 5.2    | Manuell   |✅ |
+| UC 5.3    | Manuell   |✅ |
+| UC 5.4    | Manuell   |✅ |
+| UC 5.5    | Manuell   |✅ |
+| UC 5.6    | Manuell   |✅ |
+| UC 6.1    | Manuell   |✅ |
+| UC 6.2    | Manuell   |✅ |
+| UC 6.3    | Manuell   |✅ |
+| UC 6.4    | Manuell   |✅ |
+| UC 6.5    | Manuell   |✅ |
+| UC 7.1    | Manuell   |✅ |
+| UC 7.2    | Manuell   |✅ |
 ***
-
 
 ## Förberedelser
 1. Installera biblioteket genom *"npm install"*.
@@ -26,10 +38,16 @@ Målet med detta dokument är att skapa överblick över testningen i laboration
 import library from './test-database.js'
 ```
 
-3. Ändra myFavouriteThings till *'test objects'* i klassen My Favorite Things.
+3. Ändra myFavoriteThings till *'test objects'* i klassen My Favorite Things.
 
 ```bash
 this.myfavouriteThings = 'test objects'
+```
+
+4. Instansiera klassen *MyFavoriteThings* i *testApp-modulen*.
+
+```bash
+const testApp = new MyFavoriteThings()
 ```
 
 ***
@@ -329,7 +347,7 @@ You have spent a total of 211 hours, approximately 9 days, with your collection 
 
 ***
 
-### UC5.1 – Hämta array med betyg (nummer).
+### UC6.1 – Hämta array med betyg (nummer).
 
 **Beskrivning:** 
 Hämtar en array med samtliga objekts betyg (nummer).
@@ -427,7 +445,7 @@ The most frequent values of all the grades are 3, 5.
 
 ***
 
-### UC8.1 – Konvertera betyg.
+### UC7.1 – Konvertera betyg.
 
 **Beskrivning:** Konverterar ett betyg (F-A, 1-10, 1-100) till bibliotekets standard (1-5), via två argument: tidigare maxbetyg, tidigare betyg.
 
@@ -447,7 +465,7 @@ console.log(testApp.convertGrade(oldMax, oldGrade))
 
 ***
 
-### UC8.2 – Konvertera och printa betyg.
+### UC7.2 – Konvertera och printa betyg.
 
 **Beskrivning:** Konverterar ett betyg (F-A, 1-10, 1-100) till bibliotekets standard (1-5), via två argument: tidigare maxbetyg, tidigare betyg. Printar till konsolen.
 

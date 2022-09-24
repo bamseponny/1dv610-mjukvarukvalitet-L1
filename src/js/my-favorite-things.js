@@ -379,6 +379,13 @@ export class MyFavoriteThings {
     }
   }
 
+  /**
+   * Convert a grade of an external scope to a grade which suits the internal scope, and prints it.
+   * The grades 1-100, 1-10 and F-A are supported for conversion.
+   *
+   * @param {*} oldMax - The max of the old grade.
+   * @param {*} oldGrade - The old grade, to be converted.
+   */
   printConvertedGrade (oldMax, oldGrade) {
     const newGrade = this.convertGrade(oldMax, oldGrade)
     console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.`)
