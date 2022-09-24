@@ -2,7 +2,9 @@
 
 ## Description
 
-Very warm welcome to the **JavaScript** library **My Favorite Things**. With this library you can take the favorite thing of your choice in one certain category – how about books, films, video games or tv shows? – and collect them in a library where you can sort them, for example, alphabetically and by grade.
+Very warm welcome to the **JavaScript** library **My Favorite Things**. With this library you can take the favorite thing of your choice in one certain category – how about books, films, video games or tv shows? – and collect them in a library where you can sort them, for example, alphabetically, by grade and discover statistics about the time you have spent with the things.
+
+You are of course free to change the library that it better suits your needs. If you have suggestions for wider changes see below (contribution).
 
 ## Installation
 
@@ -14,9 +16,9 @@ npm install
 
 ## Usage
 
-The idea with the library is to **arrange, filter and keep track on certain collections**. You can for example create web applications where you show off, sort and filter the collection in a number of ways.
+The idea with the library is to **arrange, filter and keep track on certain collections**. You can for example create web applications where you show off the collection in a number of ways.
 
-It's really up to you to pick a suitable collection. In the code examples below you can see a collection of video games. This have been produced in the *database.js* file. This array of objects are you supposed to replace with your own collection. In this example we only have one object (one video game in this particular instance).
+It's really up to you to pick a suitable collection. In the code example below you can see a collection of video games. This have been produced in the *database.js* file. This array of objects are you supposed to replace with your own collection. In this example we only have one object (one video game in this particular instance).
 
 ```bash
 export const library = [{
@@ -35,18 +37,18 @@ After producing your first iteration of the library (which can include one to ma
 
 ***
 
-- List all titles
+- List all titles in the console.
 
 ```bash
-testApp.listAllTitles()
+testApp.printAllTitles()
 ```
 
 List the complete database of favorite things in alphabetical order.
 
 ```bash
-Eiyuden Chronicle: Rising *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRADE: 3 of 5
-Enslaved: Odyssey to the West *** FORMAT: Xbox 360 *** RELEASE YEAR: 2010 *** GRADE: 4 of 5
-Horizon Forbidden West *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRADE: 5 of 5
+Eiyuden Chronicle: Rising *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRADE: 3 of 5 *** PLAY TIME: 20 hours
+Enslaved: Odyssey to the West *** FORMAT: Xbox 360 *** RELEASE YEAR: 2010 *** GRADE: 4 of 5 *** PLAY TIME: 36 hours
+Horizon Forbidden West *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRADE: 5 of 5 *** PLAY TIME: 88 hours
 ```
 
 ***
@@ -54,23 +56,24 @@ Horizon Forbidden West *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRAD
 - List by time span
 
 ```bash
-testApp.listByTimeSpan(2010, 2013)
+console.log(favoriteBooks.listByTimeSpan(1850, 2000))
 ```
 Get all favorite things from a certain time span.
 
 ```bash
-The video games in your library between years 2010 and 2013 are:
-Enslaved: Odyssey to the West,
-Ni no Kuni: Wrath of the White Witch,
-Star Wars: Knights of the Old Republic
+[
+  'The Lord of the Rings',
+  'Moby Dick',
+  'Harry Potter and the Goblet of Fire'
+]
 ```
 
 ***
 
-- Filter by data
+- Filter and print by data
 
 ```bash
-testApp.filterByData('grade', 4)
+favoriteGames.filterByData('grade', 4)
 ```
 Filter the favorite things in the library depending on the chosen data type and data value (the grade 4 in this case).
 
@@ -83,20 +86,20 @@ The video games with the grade 4 in your collection are Enslaved: Odyssey to the
 - Calculate average
 
 ```bash
-testApp.calculateAverage()
+favoriteTvShows.calculateAverage()
 ```
 Calculates the average of an array with numbers (the grades in this case).
 
 ```bash
-The average of the grade is 3.67.
+3.67.
 ```
 
 ***
 
-- Convert grade
+- Convert old grade and print new grade
 
 ```bash
-testApp.convertGrade(100, 28)
+console.log(favoriteFilms.convertGrade(28, 100)
 ```
 Convert a grade of an external scope to a grade which suits the internal scope. In this example we convert 28 out of 100 to a new grade, with maximum value at 5.
 

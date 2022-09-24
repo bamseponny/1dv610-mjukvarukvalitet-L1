@@ -4,7 +4,7 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './test-database.js'
+import library from './database.js'
 
 /**
  * Represents a MyFavoriteThings class.
@@ -18,7 +18,7 @@ export class MyFavoriteThings {
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
-    this.MyFavoriteThings = 'test-objects'
+    this.MyFavoriteThings = 'video games'
   }
 
   /**
