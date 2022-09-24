@@ -196,6 +196,11 @@ export class MyFavoriteThings {
     return numberArray.sort((num1, num2) => num1 - num2)
   }
 
+  /**
+   * Calculate and returns the total number of hours spent with the collection.
+   *
+   * @returns {number} number - Returns a number.
+   */
   calculateTotalHoursSpent () {
     const hourArray = this.getNumbers('hours')
     const totalHours = hourArray.reduce((num1, num2) => (num1 + num2))
@@ -203,6 +208,11 @@ export class MyFavoriteThings {
     return totalHours
   }
 
+  /**
+   * Calculate and returns the total number of days spent with the collection.
+   *
+   * @returns {number} number - Returns a number.
+   */
   calculateNumberOfDaysSpent () {
     const hourArray = this.getNumbers('hours')
     const daysSpent = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
@@ -210,6 +220,11 @@ export class MyFavoriteThings {
     return daysSpent
   }
 
+  /**
+   * Calculate and returns the average number of hours spent with the collection.
+   *
+   * @returns {number} number - Returns a number.
+   */
   calculateAverageHoursSpent () {
     const hourArray = this.getNumbers('hours')
     const averageHours = Math.round(hourArray.reduce((num1, num2) => (num1 + num2)) / hourArray.length)
@@ -217,6 +232,11 @@ export class MyFavoriteThings {
     return averageHours
   }
 
+  /**
+   * Filters and returns the min and max number of hours spent with the collection.
+   *
+   * @returns {number[]} numbers - Returns an array of numbers.
+   */
   calculateMinMaxHours () {
     const hourArray = this.getNumbers('hours')
     const minMaxArray = []
@@ -232,20 +252,20 @@ export class MyFavoriteThings {
    * Print statistics of the items in the collection.
    */
   PrintTimeStatistics () {
+    const numberOfHours = this.calculateTotalHoursSpent()
+    const numberOfDays = this.calculateNumberOfDaysSpent()
+    const averageHours = this.calculateAverageHoursSpent()
+    const minMaxHours = this.calculateMinMaxHours()
 
-
-    const hourArray = this.getAllPlayHours('hoursPlayed')
-
-    const hoursPlayed = hourArray.reduce((num1, num2) => (num1 + num2))
-    const daysPlayed = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
-    const averageHours = Math.round(hourArray.reduce((num1, num2) => (num1 + num2)) / hourArray.length)
-
-    console.log(`You've spent a total of ${hoursPlayed} hours, approximately ${daysPlayed} days, with your collection of ${this.MyFavoriteThings}. 
-    The average time spent with each individual library object is ${averageHours} hours.`)
+    console.log(`You've spent a total of ${numberOfHours} hours, approximately ${numberOfDays} days, with your collection of ${this.MyFavoriteThings}. 
+    The average time spent with each individual library object is ${averageHours} hours.
+    The least amount of time you've spent on an item is ${minMaxHours[0]} hours, and the most time is ${minMaxHours[1]} hours.`)
   }
 
   /**
    * Calculates the average of an array with numbers.
+   * 
+   * 
    */
   calculateAverage () {
     const averageArray = this.getAllGrades()
