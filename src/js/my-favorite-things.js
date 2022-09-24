@@ -177,15 +177,22 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Filter out the pure grades (numbers in a certain scope, 1-5, 1-100, etc) and sort them.
+   * Filter out the pure numbers from the library and sort them.
    *
+   * @param {string} numberType - Chosen number type.
    * @returns {number[]} numbers - Returns an array of numbers.
    */
-  getAllGrades () {
-    let gradesArray = Array.from(library)
-    this.validateArray(gradesArray)
-    gradesArray = library.map(dataBase => dataBase.grade)
-    return gradesArray.sort((num1, num2) => num1 - num2)
+  getNumbers (numberType) {
+    let numberArray = Array.from(library)
+    this.validateArray(numberArray)
+    if (numberType === 'grades') {
+      numberArray = library.map(dataBase => dataBase.grade)
+    } else if (numberType === 'hoursPlayed') {
+      numberArray = library.map(dataBase => dataBase.hoursPlayed)
+    } else {
+      throw new Error('Please pass in a valid number type.')
+    }
+    return numberArray.sort((num1, num2) => num1 - num2)
   }
 
   /**

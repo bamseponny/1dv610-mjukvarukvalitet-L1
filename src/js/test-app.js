@@ -17,10 +17,10 @@ testApp.PrintByTimeSpan(2036, 2038) */
 /* console.log(testApp.findTitles('the'))
 testApp.printTitles('the') */
 
-/* console.log(testApp.filterByData('releaseYear', 2022)) */
-testApp.printFilteredData('format', 'Playstation 5')
+/* console.log(testApp.filterByData('releaseYear', 2022))
+testApp.printFilteredData('format', 'Playstation 5') */
 
-/* console.log(testApp.getAllGrades()) */
+console.log(testApp.getNumbers('hoursPlayed'))
 
 /* testApp.calculateTimeStatistics() */
 /* console.log(testApp.calculateAverage()) */
