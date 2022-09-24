@@ -187,32 +187,53 @@ export class MyFavoriteThings {
     this.validateArray(numberArray)
     if (numberType === 'grades') {
       numberArray = library.map(dataBase => dataBase.grade)
-    } else if (numberType === 'hoursPlayed') {
+    } else if (numberType === 'hours') {
       numberArray = library.map(dataBase => dataBase.hoursPlayed)
     } else {
       throw new Error('Please pass in a valid number type.')
     }
+
     return numberArray.sort((num1, num2) => num1 - num2)
   }
 
-  /**
-   * Filter out the pure hours and sort them.
-   *
-   * @param numberType
-   * @returns {number[]} numbers - Returns an array of numbers.
-   */
-  getAllPlayHours (numberType) {
-    console.log(numberType)
-    let numberArray = Array.from(library)
-    this.validateArray(numberArray)
-    numberArray = library.map(dataBase => dataBase.hoursPlayed)
-    return numberArray.sort((num1, num2) => num1 - num2)
+  calculateTotalHoursSpent () {
+    const hourArray = this.getNumbers('hours')
+    const totalHours = hourArray.reduce((num1, num2) => (num1 + num2))
+
+    return totalHours
+  }
+
+  calculateNumberOfDaysSpent () {
+    const hourArray = this.getNumbers('hours')
+    const daysSpent = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
+
+    return daysSpent
+  }
+
+  calculateAverageHoursSpent () {
+    const hourArray = this.getNumbers('hours')
+    const averageHours = Math.round(hourArray.reduce((num1, num2) => (num1 + num2)) / hourArray.length)
+
+    return averageHours
+  }
+
+  calculateMinMaxHours () {
+    const hourArray = this.getNumbers('hours')
+    const minMaxArray = []
+
+    const min = hourArray[0]
+    const max = hourArray[hourArray.length - 1]
+    minMaxArray.push(min, max)
+
+    return minMaxArray
   }
 
   /**
-   * Calculate time statistics of the items in the collection.
+   * Print statistics of the items in the collection.
    */
-  calculateTimeStatistics () {
+  PrintTimeStatistics () {
+
+
     const hourArray = this.getAllPlayHours('hoursPlayed')
 
     const hoursPlayed = hourArray.reduce((num1, num2) => (num1 + num2))

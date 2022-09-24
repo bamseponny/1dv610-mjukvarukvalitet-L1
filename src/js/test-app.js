@@ -20,7 +20,11 @@ testApp.printTitles('the') */
 /* console.log(testApp.filterByData('releaseYear', 2022))
 testApp.printFilteredData('format', 'Playstation 5') */
 
-console.log(testApp.getNumbers('hoursPlayed'))
+/* console.log(testApp.getNumbers('hoursPlayed')) */
+/* console.log(testApp.calculateTotalHoursSpent())
+console.log(testApp.calculateNumberOfDaysSpent())
+console.log(testApp.calculateAverageHoursSpent()) */
+console.log(testApp.calculateMinMaxHours())
 
 /* testApp.calculateTimeStatistics() */
 /* console.log(testApp.calculateAverage()) */
