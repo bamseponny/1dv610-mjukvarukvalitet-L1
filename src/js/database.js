@@ -56,7 +56,7 @@ export const library = [
     releaseYear: 2016,
     genre: 'Platform',
     series: 'Ratchet & Clank',
-    grade: 16,
+    grade: 4,
     hoursPlayed: 16
   },
   {

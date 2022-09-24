@@ -8,17 +8,19 @@ import { MyFavoriteThings } from './my-favorite-things.js'
 
 const testApp = new MyFavoriteThings()
 
-// testApp.listAllTitles()
-// testApp.printAllTitles()
+/* console.log(testApp.listAllTitles())
+testApp.printAllTitles() */
 
-// testApp.listByTimeSpan(2015, 2020)
-// testApp.PrintByTimeSpan(2036, 2038)
+/* console.log(testApp.listByTimeSpan(2015, 2020))
+testApp.PrintByTimeSpan(2036, 2038) */
 
-// testApp.findTitles('the')
+/* console.log(testApp.findTitles('the'))
+testApp.printTitles('the') */
 
-// testApp.getAllGrades()
+/* console.log(testApp.filterByData('releaseYear', 2022)) */
+testApp.printFilteredData('format', 'Playstation 5')
 
-/* console.log(testApp.filterByData('grade', 3).length) */
+/* console.log(testApp.getAllGrades()) */
 
 /* testApp.calculateTimeStatistics() */
 /* console.log(testApp.calculateAverage()) */

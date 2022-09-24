@@ -82,9 +82,10 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Find titles in the library based on a passed string.
+   * Find titles in the library based on passed string.
    *
    * @param {string} title - Passed string.
+   * @returns {Array[]} strings - Returns an array of strings.
    */
   findTitles (title) {
     const arrayOfTitles = []
@@ -93,6 +94,16 @@ export class MyFavoriteThings {
         arrayOfTitles.push(library[i].title)
       }
     }
+    return arrayOfTitles
+  }
+
+  /**
+   * Print titles of the library based on passed string.
+   *
+   * @param {string} title - Passed string.
+   */
+  printTitles (title) {
+    const arrayOfTitles = this.findTitles(title)
     if (arrayOfTitles.length < 1) {
       console.log(`No titles in the library  to show with passed "${title}".\n`)
     } else if (arrayOfTitles.length === 1) {
@@ -103,60 +114,65 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Filter the favorite things in the library depending on the chosen data type and data value.
+   * Returns a sorted array with favorite things in the library depending on the chosen data type and data value.
    *
    * @param {string} dataType - Chosen data type.
    * @param {*} dataValue - Chosen data value.
+   * @returns {Array[]} strings - Returns an array of strings.
    */
   filterByData (dataType, dataValue) {
     if (dataType !== undefined) {
       switch (dataType) {
         case 'format': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
+          this.validateArray(filterTheLibrary)
 
-          if (!filterTheLibrary.length) {
-            console.log(`No ${this.MyFavoriteThings} of this ${dataType}.\n`)
-          } else {
-            const formatCounter = filterTheLibrary.map(format => format.title).sort()
-            const resultString = formatCounter.join(', ')
-            console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${resultString}.\n`)
-          }
-          break
+          return filterTheLibrary.map(format => format.title).sort()
+          /* const resultString = formatCounter.join(', ')
+            console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${resultString}.\n`) */
         }
         case 'releaseYear': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
+          this.validateArray(filterTheLibrary)
 
-          if (!filterTheLibrary.length) {
-            console.log(`No ${this.MyFavoriteThings} from this ${dataType.slice(7, 11).toLowerCase()} to show.\n`)
-          } else {
-            const formatCounter = filterTheLibrary.map(format => format.title).sort()
-            const resultString = formatCounter.join(', ')
-            console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${resultString}.\n`)
-          }
-          break
+          return filterTheLibrary.map(format => format.title).sort()
+          /* const resultString = formatCounter.join(', ')
+            console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${resultString}.\n`) */
         }
         case 'grade': {
           if (dataValue < this.minimumGrade || dataValue > this.maximumGrade || typeof dataValue !== 'number') {
-            console.log(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
+            throw new Error(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
           } else {
-            const filterTheThings = library.filter((listOfThings) => listOfThings.grade === dataValue)
+            const filterTheLibrary = library.filter((listOfThings) => listOfThings.grade === dataValue)
+            this.validateArray(filterTheLibrary)
 
-            if (!filterTheThings.length) {
-              console.log(`No ${this.MyFavoriteThings} to show with the grade ${dataValue}.\n`)
-            } else {
-              const titles = filterTheThings.map(grade => grade.title).sort()
-              const resultString = titles.join(', ')
-              console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`)
-              return resultString
-            }
+            return filterTheLibrary.map(grade => grade.title).sort()
+            /* const resultString = titles.join(', ')
+              console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`) */
           }
-          break
         }
         default:
-          console.log('This data type is not supported.\n')
+          throw new Error('This data type is not supported.\n')
       }
     } else {
       throw Error('Please pass a valid data type.')
+    }
+  }
+
+  /**
+   * Prints out favorite things in the library depending on the chosen data type and data value.
+   *
+   * @param {string} dataType - Chosen data type.
+   * @param {*} dataValue - Chosen data value.
+   */
+  printFilteredData (dataType, dataValue) {
+    const filteredData = this.filterByData(dataType, dataValue)
+    if (dataType === 'format') {
+      console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${filteredData.join(', ')}.`)
+    } else if (dataType === 'releaseYear') {
+      console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${filteredData.join(', ')}.`)
+    } else if (dataType === 'grade') {
+      console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${filteredData.join(', ')}.`)
     }
   }
 
