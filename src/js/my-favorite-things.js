@@ -4,7 +4,7 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './database.js'
+import library from './test-database.js'
 
 /**
  * Represents a MyFavoriteThings class.
@@ -18,7 +18,7 @@ export class MyFavoriteThings {
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
-    this.MyFavoriteThings = 'video games'
+    this.MyFavoriteThings = 'test-objects'
   }
 
   /**
@@ -48,7 +48,6 @@ export class MyFavoriteThings {
     library.forEach((element) => {
       console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
     })
-    console.log('\n')
   }
 
   /**
@@ -74,11 +73,11 @@ export class MyFavoriteThings {
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
    */
-  PrintByTimeSpan (startYear, endYear) {
+  printByTimeSpan (startYear, endYear) {
     const titlesOfTimeSpan = (this.listByTimeSpan(startYear, endYear))
     this.validateArray(titlesOfTimeSpan)
     console.log(`The ${this.MyFavoriteThings} in your library between years ${startYear} and ${endYear} are:`)
-    console.log(`${titlesOfTimeSpan.sort().join(', \n')} \n`)
+    console.log(`${titlesOfTimeSpan.sort().join(', ')}`)
   }
 
   /**
@@ -105,11 +104,11 @@ export class MyFavoriteThings {
   printTitles (title) {
     const arrayOfTitles = this.findTitles(title)
     if (arrayOfTitles.length < 1) {
-      console.log(`No titles in the library  to show with passed "${title}".\n`)
+      console.log(`No titles in the library  to show with passed "${title}".`)
     } else if (arrayOfTitles.length === 1) {
-      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.\n`)
+      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.`)
     } else {
-      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.\n`)
+      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.`)
     }
   }
 
@@ -126,33 +125,30 @@ export class MyFavoriteThings {
         case 'format': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
           this.validateArray(filterTheLibrary)
+          const filteredLibrary = filterTheLibrary.map(format => format.title).sort()
 
-          return filterTheLibrary.map(format => format.title).sort()
-          /* const resultString = formatCounter.join(', ')
-            console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${resultString}.\n`) */
+          return filteredLibrary
         }
         case 'releaseYear': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
           this.validateArray(filterTheLibrary)
+          const filteredLibrary = filterTheLibrary.map(format => format.title).sort()
 
-          return filterTheLibrary.map(format => format.title).sort()
-          /* const resultString = formatCounter.join(', ')
-            console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${resultString}.\n`) */
+          return filteredLibrary
         }
         case 'grade': {
           if (dataValue < this.minimumGrade || dataValue > this.maximumGrade || typeof dataValue !== 'number') {
-            throw new Error(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.\n`)
+            throw new Error(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.`)
           } else {
             const filterTheLibrary = library.filter((listOfThings) => listOfThings.grade === dataValue)
             this.validateArray(filterTheLibrary)
+            const filteredLibrary = filterTheLibrary.map(grade => grade.title).sort()
 
-            return filterTheLibrary.map(grade => grade.title).sort()
-            /* const resultString = titles.join(', ')
-              console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`) */
+            return filteredLibrary
           }
         }
         default:
-          throw new Error('This data type is not supported.\n')
+          throw new Error('This data type is not supported.')
       }
     } else {
       throw Error('Please pass a valid data type.')
@@ -193,7 +189,8 @@ export class MyFavoriteThings {
       throw new Error('Please pass in a valid number type.')
     }
 
-    return numberArray.sort((num1, num2) => num1 - num2)
+    const sortedArrayOfNumbers = numberArray.sort((num1, num2) => num1 - num2)
+    return sortedArrayOfNumbers
   }
 
   /**
@@ -249,7 +246,7 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Print statistics of the items in the collection.
+   * Print time statistics of the items in the collection.
    */
   PrintTimeStatistics () {
     const numberOfHours = this.calculateTotalHoursSpent()
@@ -264,28 +261,30 @@ export class MyFavoriteThings {
 
   /**
    * Calculates the average of an array with numbers.
-   * 
-   * 
+   *
+   * @returns {number} number - Returns a number.
    */
-  calculateAverage () {
-    const averageArray = this.getAllGrades()
-    let total = 0
+  calculateAverageGrade () {
+    const gradeArray = this.getNumbers('grades')
 
-    for (let i = 0; i < averageArray.length; i++) {
-      total = total + averageArray[i]
+    let total = 0
+    for (let i = 0; i < gradeArray.length; i++) {
+      total = total + gradeArray[i]
     }
 
-    const average = total / averageArray.length
+    let average = total / gradeArray.length
+    average = Math.round(average * 100) / 100
 
-    console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
-    return Math.round(average * 100) / 100
+    return average
   }
 
   /**
    * Calculates the median of an array with numbers.
+   *
+   * @returns {number} number - Returns a number.
    */
-  calculateMedian () {
-    const medianArray = Array.from(this.getAllGrades())
+  calculateMedianGrade () {
+    const medianArray = this.getNumbers('grades')
     let median
 
     if (medianArray.length % 2 !== 0) {
@@ -295,19 +294,20 @@ export class MyFavoriteThings {
       const medianIndex = Math.floor(medianArray.length / 2)
       median = (medianArray[medianIndex - 1] + medianArray[medianIndex]) / 2
     }
-
-    console.log(`The median of the grade is ${median}.\n`)
+    return median
   }
 
   /**
    * Calculates the mode of an array with numbers.
    * Code credit: my own solution in 1DV025, assignment A2.
+   *
+   * @returns {number} number - Returns one or several numbers.
    */
-  calculateMode () {
-    const modeArray = Array.from(this.getAllGrades())
+  calculateModeGrade () {
+    const modeArray = this.getNumbers('grades')
 
     const freq = {}
-    let maxFreq
+    let maxFreq = 0
     const modes = []
 
     for (const num in modeArray) {
@@ -326,10 +326,23 @@ export class MyFavoriteThings {
 
     const parsedModes = modes.map(string => Number(string))
 
-    if (parsedModes.length === 1) {
-      console.log(`The most frequent value of all the grades is ${parsedModes}.\n`)
-    } else if (parsedModes.length > 1) {
-      console.log(`The most frequent values of all the grades are ${parsedModes.join(', ')}.\n`)
+    return parsedModes
+  }
+
+  /**
+   * Print grade statistics of the items in the collection.
+   */
+  printGradeStatistics () {
+    const gradeAverage = this.calculateAverageGrade()
+    const gradeMedian = this.calculateMedianGrade()
+    const gradeMode = this.calculateModeGrade()
+
+    console.log(`The average of the grade is ${Math.round(gradeAverage * 100) / 100}.`)
+    console.log(`The median of the grade is ${gradeMedian}.`)
+    if (gradeMode.length === 1) {
+      console.log(`The most frequent value of all the grades is ${gradeMode}.`)
+    } else if (gradeMode.length > 1) {
+      console.log(`The most frequent values of all the grades are ${gradeMode.join(', ')}.`)
     }
   }
 
@@ -339,20 +352,19 @@ export class MyFavoriteThings {
    *
    * @param {*} oldMax - The max of the old grade.
    * @param {*} oldGrade - The old grade, to be converted.
+   * @returns {number} number - Returns a number.
    */
   convertGrade (oldMax, oldGrade) {
     switch (oldMax) {
       case 100: {
         const newGrade = Math.round(oldGrade / 100 * 5)
 
-        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
-        break
+        return newGrade
       }
       case 10: {
         const newGrade = Math.round(oldGrade / 10 * 5)
 
-        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
-        break
+        return newGrade
       }
       case 'A': {
         const transitionGrade = oldGrade === 'F' ? oldGrade = 'E' : oldGrade
@@ -360,12 +372,16 @@ export class MyFavoriteThings {
         const letterArray = ['F', 'E', 'D', 'C', 'B', 'A']
         const newGrade = letterArray.indexOf(transitionGrade)
 
-        console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.\n`)
-        break
+        return newGrade
       }
       default:
-        console.log('This grade scope is not supported.\n')
+        throw new Error('This grade scope is not supported.')
     }
+  }
+
+  printConvertedGrade (oldMax, oldGrade) {
+    const newGrade = this.convertGrade(oldMax, oldGrade)
+    console.log(`Old grade, ${oldGrade} with maximum of ${oldMax}, is converted to ${newGrade} out of ${this.maximumGrade}.`)
   }
 
   /**

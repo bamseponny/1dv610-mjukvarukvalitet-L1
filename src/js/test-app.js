@@ -8,28 +8,58 @@ import { MyFavoriteThings } from './my-favorite-things.js'
 
 const testApp = new MyFavoriteThings()
 
+// Arguments to work with
+const startYear = 2015
+const endYear = 2020
+const searchString = 'A'
+const releaseYearString = 'releaseYear'
+const passedYear = 2022
+const formatString = 'format'
+const passedFormat = 'Playstation 5'
+const grade = 'grade'
+const passedGrade = 3
+const hoursString = 'hours'
+const gradesString = 'grades'
+const oldMax = 100
+const oldGrade = 37
+
+// List and sort all titles in library
 /* console.log(testApp.listAllTitles())
 testApp.printAllTitles() */
 
-/* console.log(testApp.listByTimeSpan(2015, 2020))
-testApp.PrintByTimeSpan(2036, 2038) */
+// Find titles in library by time span
+/* console.log(testApp.listByTimeSpan(startYear, endYear))
+testApp.printByTimeSpan(startYear, endYear) */
 
-/* console.log(testApp.findTitles('the'))
-testApp.printTitles('the') */
+// Find titles in library by passed string
+/* console.log(testApp.findTitles(searchString))
+testApp.printTitles(searchString) */
 
-/* console.log(testApp.filterByData('releaseYear', 2022))
-testApp.printFilteredData('format', 'Playstation 5') */
+// Filter data in library
+/* console.log(testApp.filterByData(grade, passedGrade))
+testApp.printFilteredData(grade, passedGrade) */
 
-/* console.log(testApp.getNumbers('hours')) */
-/* console.log(testApp.calculateTotalHoursSpent()) */
-/* console.log(testApp.calculateNumberOfDaysSpent())
+/* console.log(testApp.filterByData(formatString, passedFormat))
+testApp.printFilteredData(formatString, passedFormat) */
+
+/* console.log(testApp.filterByData(grade, passedGrade))
+testApp.printFilteredData(grade, passedGrade) */
+
+// Time statistics of library
+/* console.log(testApp.getNumbers(hoursString))
+console.log(testApp.calculateTotalHoursSpent())
+console.log(testApp.calculateNumberOfDaysSpent())
 console.log(testApp.calculateAverageHoursSpent())
-console.log(testApp.calculateMinMaxHours()) */
-testApp.PrintTimeStatistics()
+console.log(testApp.calculateMinMaxHours())
+testApp.PrintTimeStatistics() */
 
-/* testApp.calculateTimeStatistics() */
-/* console.log(testApp.calculateAverage()) */
-/* testApp.calculateMedian()
-testApp.calculateMode()
+// Grade statistics of the library
+/* console.log(testApp.getNumbers(gradesString))
+console.log(testApp.calculateAverageGrade())
+console.log(testApp.calculateMedianGrade())
+console.log(testApp.calculateModeGrade())
+testApp.printGradeStatistics() */
 
-testApp.convertGrade(100, 37) */
+// Convert an old grade to match the libraries' scope
+console.log(testApp.convertGrade(oldMax, oldGrade))
+testApp.printConvertedGrade(oldMax, oldGrade)
