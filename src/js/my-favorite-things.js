@@ -18,14 +18,16 @@ export class MyFavoriteThings {
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
-    this.myfavouriteThings = 'video games'
+    this.MyFavoriteThings = 'video games'
   }
 
   /**
-   * List the complete database of favorite things in alphabetical order.
+   * List the complete database array of objects in alphabetical order.
    *
+   * @returns {Array[]} numbers - Returns an array of objects.
    */
   listAllTitles () {
+    this.validateArray(library)
     library.sort((a, b) => {
       const titleA = a.title
       const titleB = b.title
@@ -34,8 +36,15 @@ export class MyFavoriteThings {
       titleA.toUpperCase() < titleB.toUpperCase() ? (compare = -1) : (compare = 1)
       return compare
     })
+    return library
+  }
 
-    console.log(`A complete list of ${this.myfavouriteThings} in the library:`)
+  /**
+   * Print all the favorite things in the database to the console.
+   */
+  printAllTitles () {
+    this.listAllTitles()
+    console.log(`A complete list of ${this.MyFavoriteThings} in the library:`)
     library.forEach((element) => {
       console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
     })
@@ -43,10 +52,11 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Get all favorite things from a certain time span.
+   * Returns an array of all favorite things from a certain time span.
    *
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
+   * @returns {Array[]} strings - Returns an array of strings.
    */
   listByTimeSpan (startYear, endYear) {
     const titlesOfTimeSpan = []
@@ -55,7 +65,19 @@ export class MyFavoriteThings {
         titlesOfTimeSpan.push(element.title)
       }
     }
-    console.log(`The ${this.myfavouriteThings} in your library between years ${startYear} and ${endYear} are:`)
+    return titlesOfTimeSpan
+  }
+
+  /**
+   * Prints all favorite things from a certain time span.
+   *
+   * @param {number} startYear - Chosen start year.
+   * @param {number} endYear - Chosen end year.
+   */
+  PrintByTimeSpan (startYear, endYear) {
+    const titlesOfTimeSpan = (this.listByTimeSpan(startYear, endYear))
+    this.validateArray(titlesOfTimeSpan)
+    console.log(`The ${this.MyFavoriteThings} in your library between years ${startYear} and ${endYear} are:`)
     console.log(`${titlesOfTimeSpan.sort().join(', \n')} \n`)
   }
 
@@ -93,11 +115,11 @@ export class MyFavoriteThings {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
 
           if (!filterTheLibrary.length) {
-            console.log(`No ${this.myfavouriteThings} of this ${dataType}.\n`)
+            console.log(`No ${this.MyFavoriteThings} of this ${dataType}.\n`)
           } else {
             const formatCounter = filterTheLibrary.map(format => format.title).sort()
             const resultString = formatCounter.join(', ')
-            console.log(`The ${this.myfavouriteThings} on ${dataValue} in your collection are ${resultString}.\n`)
+            console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${resultString}.\n`)
           }
           break
         }
@@ -105,11 +127,11 @@ export class MyFavoriteThings {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
 
           if (!filterTheLibrary.length) {
-            console.log(`No ${this.myfavouriteThings} from this ${dataType.slice(7, 11).toLowerCase()} to show.\n`)
+            console.log(`No ${this.MyFavoriteThings} from this ${dataType.slice(7, 11).toLowerCase()} to show.\n`)
           } else {
             const formatCounter = filterTheLibrary.map(format => format.title).sort()
             const resultString = formatCounter.join(', ')
-            console.log(`The ${this.myfavouriteThings} from ${dataValue} in your collection are ${resultString}.\n`)
+            console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${resultString}.\n`)
           }
           break
         }
@@ -120,11 +142,12 @@ export class MyFavoriteThings {
             const filterTheThings = library.filter((listOfThings) => listOfThings.grade === dataValue)
 
             if (!filterTheThings.length) {
-              console.log(`No ${this.myfavouriteThings} to show with the grade ${dataValue}.\n`)
+              console.log(`No ${this.MyFavoriteThings} to show with the grade ${dataValue}.\n`)
             } else {
               const titles = filterTheThings.map(grade => grade.title).sort()
               const resultString = titles.join(', ')
-              console.log(`The ${this.myfavouriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`)
+              console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${resultString}.\n`)
+              return resultString
             }
           }
           break
@@ -152,13 +175,29 @@ export class MyFavoriteThings {
   /**
    * Filter out the pure hours and sort them.
    *
+   * @param numberType
    * @returns {number[]} numbers - Returns an array of numbers.
    */
-  getAllPlayHours () {
-    let hourArray = Array.from(library)
-    this.validateArray(hourArray)
-    hourArray = library.map(dataBase => dataBase.hoursPlayed)
-    return hourArray.sort((num1, num2) => num1 - num2)
+  getAllPlayHours (numberType) {
+    console.log(numberType)
+    let numberArray = Array.from(library)
+    this.validateArray(numberArray)
+    numberArray = library.map(dataBase => dataBase.hoursPlayed)
+    return numberArray.sort((num1, num2) => num1 - num2)
+  }
+
+  /**
+   * Calculate time statistics of the items in the collection.
+   */
+  calculateTimeStatistics () {
+    const hourArray = this.getAllPlayHours('hoursPlayed')
+
+    const hoursPlayed = hourArray.reduce((num1, num2) => (num1 + num2))
+    const daysPlayed = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
+    const averageHours = Math.round(hourArray.reduce((num1, num2) => (num1 + num2)) / hourArray.length)
+
+    console.log(`You've spent a total of ${hoursPlayed} hours, approximately ${daysPlayed} days, with your collection of ${this.MyFavoriteThings}. 
+    The average time spent with each individual library object is ${averageHours} hours.`)
   }
 
   /**
@@ -175,6 +214,7 @@ export class MyFavoriteThings {
     const average = total / averageArray.length
 
     console.log(`The average of the grade is ${Math.round(average * 100) / 100}.\n`)
+    return Math.round(average * 100) / 100
   }
 
   /**

@@ -8,7 +8,7 @@ Very warm welcome to the **JavaScript** library **My Favorite Things**. With thi
 
 Open a termial in the application folder and input *"npm install"*.
 
-```bash
+```
 npm install
 ```
 

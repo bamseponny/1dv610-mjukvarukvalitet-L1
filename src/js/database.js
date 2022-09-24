@@ -56,7 +56,8 @@ export const library = [
     releaseYear: 2016,
     genre: 'Platform',
     series: 'Ratchet & Clank',
-    grade: 16
+    grade: 16,
+    hoursPlayed: 16
   },
   {
     title: 'Ni no Kuni: Wrath of the White Witch',
