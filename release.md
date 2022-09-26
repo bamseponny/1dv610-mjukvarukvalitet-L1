@@ -18,7 +18,7 @@
     - ✅ Samtliga testfall är skrivna    
     - [ ] Testfall är automatiserade
     - ✅ Det finns en tydlig beskrivning i hur modulen skall användas (i git)
-    - [ ] Kodkvalitetskraven är varierade 
+    - ✅ Kodkvalitetskraven är varierade 
   - [ ] Jag eftersträvar med denna inlämning högsta betyg (A) 
 ​
 Förtydligande: Examinator kommer sätta betyg oberoende på vad ni anser. 
