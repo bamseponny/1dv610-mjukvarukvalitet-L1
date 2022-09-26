@@ -31,7 +31,7 @@ export const library = [{
   }]
 ```
 
-After producing your first iteration of the library (which can include one to many objects) this will be imported by the library's main module, the *MyFavoriteThings.js* class. By calling the different methods via the *test-app.js* class you can arrange and filter the collection in a number of ways. However, when working with your own data it is preferable to import the main module.
+After producing your first iteration of the library (which can include one to many objects) this will be imported by the library's main module, the *MyFavoriteThings.js* class. By calling the different methods via the *test-app.js* class you can arrange and filter the collection in a number of ways. This module is great for testing your library. However, when working with your own data it is preferable to import the main module.
 
 ### Method examples
 
