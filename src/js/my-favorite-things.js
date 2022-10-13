@@ -40,7 +40,7 @@ export class MyFavoriteThings {
   /**
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
-   * @returns {Array[]} strings - Returns an array of strings with found object titles.
+   * @returns {Array[]} - Returns an array of objects with found objects.
    */
   listByTimeSpan (startYear, endYear) {
     const filteredLibraryByTimeSpan = library.filter((listOfThings) => (listOfThings.releaseYear >= startYear) &&
@@ -51,91 +51,97 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Prints all favorite things from a certain time span.
-   *
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
    */
   printByTimeSpan (startYear, endYear) {
-    const titlesOfTimeSpan = (this.listByTimeSpan(startYear, endYear))
-    this.validateArray(titlesOfTimeSpan)
+    const objectsOfTimeSpan = (this.listByTimeSpan(startYear, endYear))
+    this.validateArray(objectsOfTimeSpan)
+
+    const titlesOfTimeSpan = []
+
+    objectsOfTimeSpan.forEach((element) => {
+      titlesOfTimeSpan.push(element.title)
+    })
+
     console.log(`The ${this.MyFavoriteThings} in your library between years ${startYear} and ${endYear} are:`)
     console.log(`${titlesOfTimeSpan.sort().join(', ')}`)
   }
 
   /**
-   * Find titles in the library based on passed string.
-   *
-   * @param {string} title - Passed string.
-   * @returns {Array[]} strings - Returns an array of strings.
+   * @param {string} searchString - Passed string.
+   * @returns {Array[]} - Returns an array of objects with found objects.
    */
-  findTitles (title) {
+  findLibraryObjects (searchString) {
+    const searchedLibrary = library.filter((listOfThings) => (listOfThings.title.toLowerCase().includes(searchString.toLowerCase())))
+
+    return searchedLibrary
+  }
+
+  /**
+   * @param {string} searchString - Passed string.
+   */
+  printObjectsOfSearchedLibrary (searchString) {
+    const arrayOfObjects = this.findLibraryObjects(searchString)
     const arrayOfTitles = []
-    for (let i = 0; i < library.length; i++) {
-      if (library[i].title.toLowerCase().includes(title.toLowerCase())) {
-        arrayOfTitles.push(library[i].title)
-      }
-    }
-    return arrayOfTitles
-  }
 
-  /**
-   * Print titles of the library based on passed string.
-   *
-   * @param {string} title - Passed string.
-   */
-  printTitles (title) {
-    const arrayOfTitles = this.findTitles(title)
-    if (arrayOfTitles.length < 1) {
-      console.log(`No titles in the library  to show with passed "${title}".`)
-    } else if (arrayOfTitles.length === 1) {
-      console.log(`The title found in the library with passed "${title}" is: ${arrayOfTitles}.`)
+    arrayOfObjects.forEach((element) => {
+      arrayOfTitles.push(element.title)
+    })
+
+    if (arrayOfObjects.length < 1) {
+      console.log(`No titles in the library  to show with passed "${searchString}".`)
+    } else if (arrayOfObjects.length === 1) {
+      console.log(`The title found in the library with passed "${searchString}" is: ${arrayOfTitles}.`)
     } else {
-      console.log(`The titles found in the library with passed "${title}" is: ${arrayOfTitles.join(', ')}.`)
+      console.log(`The titles found in the library with passed "${searchString}" is: ${arrayOfTitles.join(', ')}.`)
     }
   }
 
   /**
-   * Returns a sorted array with favorite things in the library depending on the chosen data type and data value.
-   *
-   * @param {string} dataType - Chosen data type.
-   * @param {*} dataValue - Chosen data value.
-   * @returns {Array[]} strings - Returns an array of strings.
+   * @param {*} format - Chosen format string.
+   * @returns {Array[]} - Returns an array of objects with found objects.
    */
-  filterByData (dataType, dataValue) {
-    if (dataType !== undefined) {
-      switch (dataType) {
-        case 'format': {
-          const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
-          this.validateArray(filterTheLibrary)
-          console.log(filterTheLibrary)
-          const filteredLibrary = filterTheLibrary.map(format => format.title).sort()
+  filterByFormat (format) {
+    if (format !== undefined) {
+      const filteredLibrary = library.filter((listOfThings) => listOfThings.format === format)
+      this.validateArray(filteredLibrary)
 
-          return filteredLibrary
-        }
-        case 'releaseYear': {
-          const filterTheLibrary = library.filter((listOfThings) => listOfThings.releaseYear === dataValue)
-          this.validateArray(filterTheLibrary)
-          const filteredLibrary = filterTheLibrary.map(format => format.title).sort()
-
-          return filteredLibrary
-        }
-        case 'grade': {
-          if (dataValue < this.minimumGrade || dataValue > this.maximumGrade || typeof dataValue !== 'number') {
-            throw new Error(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.`)
-          } else {
-            const filterTheLibrary = library.filter((listOfThings) => listOfThings.grade === dataValue)
-            this.validateArray(filterTheLibrary)
-            const filteredLibrary = filterTheLibrary.map(grade => grade.title).sort()
-
-            return filteredLibrary
-          }
-        }
-        default:
-          throw new Error('This data type is not supported.')
-      }
+      return filteredLibrary
     } else {
-      throw Error('Please pass a valid data type.')
+      throw Error('Please pass a valid format type.')
+    }
+  }
+
+  /**
+   * @param {*} year - Chosen year number.
+   * @returns {Array[]} - Returns an array of objects with found objects.
+   */
+  filterByReleaseYear (year) {
+    if (year !== undefined) {
+      const filteredLibrary = library.filter((listOfThings) => listOfThings.releaseYear === year)
+      this.validateArray(filteredLibrary)
+
+      return filteredLibrary
+    } else {
+      throw Error('Please pass a valid year.')
+    }
+  }
+
+  /**
+   * @param {*} grade - Chosen grade number.
+   * @returns {Array[]} - Returns an array of objects with found objects.
+   */
+  filterByGrade (grade) {
+    if (grade < this.minimumGrade || grade > this.maximumGrade || typeof grade !== 'number') {
+      throw new Error(`Please choose a grade between ${this.minimumGrade} and ${this.maximumGrade}.`)
+    } else if (grade > this.minimumGrade && grade < this.maximumGrade) {
+      const filteredLibrary = library.filter((listOfThings) => listOfThings.grade === grade)
+      this.validateArray(filteredLibrary)
+
+      return filteredLibrary
+    } else {
+      throw Error('Please pass a valid grade.')
     }
   }
 
@@ -145,76 +151,62 @@ export class MyFavoriteThings {
    * @param {string} dataType - Chosen data type.
    * @param {*} dataValue - Chosen data value.
    */
-  printFilteredData (dataType, dataValue) {
-    const filteredData = this.filterByData(dataType, dataValue)
+  /* printFilteredData (dataType, dataValue) {
     if (dataType === 'format') {
+      const filteredData = this.filterByFormat(dataValue)
       console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${filteredData.join(', ')}.`)
     } else if (dataType === 'releaseYear') {
+      const filteredData = this.filterByReleaseYear(dataValue)
       console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${filteredData.join(', ')}.`)
     } else if (dataType === 'grade') {
+      const filteredData = this.filterByReleaseYear(dataValue)
       console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${filteredData.join(', ')}.`)
     }
-  }
+  } */
 
   /**
-   * Filter out the pure numbers from the library and sort them.
-   *
-   * @param {string} numberType - Chosen number type.
-   * @returns {number[]} numbers - Returns an array of numbers.
+   * @returns {number[]} - Returns an array of hour numbers.
    */
-  getNumbers (numberType) {
+  getHourNumbers () {
     let numberArray = Array.from(library)
     this.validateArray(numberArray)
-    if (numberType === 'grades') {
-      numberArray = library.map(dataBase => dataBase.grade)
-    } else if (numberType === 'hours') {
-      numberArray = library.map(dataBase => dataBase.hoursPlayed)
-    } else {
-      throw new Error('Please pass in a valid number type.')
-    }
-
+    numberArray = library.map(dataBase => dataBase.hoursPlayed)
     const sortedArrayOfNumbers = numberArray.sort((num1, num2) => num1 - num2)
     return sortedArrayOfNumbers
   }
 
   /**
-   * Calculate and returns the total number of hours spent with the collection.
-   *
    * @returns {number} number - Returns a number.
    */
   calculateTotalHoursSpent () {
-    const hourArray = this.getNumbers('hours')
+    const hourArray = this.getHourNumbers()
     const totalHours = hourArray.reduce((num1, num2) => (num1 + num2))
 
     return totalHours
   }
 
   calculateNumberOfDaysSpent () {
-    const hourArray = this.getNumbers('hours')
+    const hourArray = this.getHourNumbers()
     const daysSpent = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
 
     return daysSpent
   }
 
   /**
-   * Calculate and returns the average number of hours spent with the collection.
-   *
    * @returns {number} number - Returns a number.
    */
   calculateAverageHoursSpent () {
-    const hourArray = this.getNumbers('hours')
+    const hourArray = this.getHourNumbers()
     const averageHours = Math.round(hourArray.reduce((num1, num2) => (num1 + num2)) / hourArray.length)
 
     return averageHours
   }
 
   /**
-   * Filters and returns the min and max number of hours spent with the collection.
-   *
    * @returns {number[]} numbers - Returns an array of numbers.
    */
   calculateMinMaxHours () {
-    const hourArray = this.getNumbers('hours')
+    const hourArray = this.getHourNumbers()
     const minMaxArray = []
 
     const min = hourArray[0]
@@ -239,12 +231,21 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Calculates the average of an array with numbers.
-   *
+   * @returns {number[]} - Returns an array of grade numbers.
+   */
+  getGradeNumbers () {
+    let numberArray = Array.from(library)
+    this.validateArray(numberArray)
+    numberArray = library.map(dataBase => dataBase.grade)
+    const sortedArrayOfNumbers = numberArray.sort((num1, num2) => num1 - num2)
+    return sortedArrayOfNumbers
+  }
+
+  /**
    * @returns {number} number - Returns a number.
    */
   calculateAverageGrade () {
-    const gradeArray = this.getNumbers('grades')
+    const gradeArray = this.getGradeNumbers()
 
     let total = 0
     for (let i = 0; i < gradeArray.length; i++) {
@@ -258,12 +259,10 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Calculates the median of an array with numbers.
-   *
    * @returns {number} number - Returns a number.
    */
   calculateMedianGrade () {
-    const medianArray = this.getNumbers('grades')
+    const medianArray = this.getGradeNumbers()
     let median
 
     if (medianArray.length % 2 !== 0) {
@@ -277,13 +276,10 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Calculates the mode of an array with numbers.
-   * Code credit: my own solution in 1DV025, assignment A2.
-   *
    * @returns {number} number - Returns one or several numbers.
    */
   calculateModeGrade () {
-    const modeArray = this.getNumbers('grades')
+    const modeArray = this.getGradeNumbers()
 
     const freq = {}
     let maxFreq = 0
@@ -308,9 +304,6 @@ export class MyFavoriteThings {
     return parsedModes
   }
 
-  /**
-   * Print grade statistics of the items in the collection.
-   */
   printGradeStatistics () {
     const gradeAverage = this.calculateAverageGrade()
     const gradeMedian = this.calculateMedianGrade()
@@ -326,40 +319,30 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Convert a grade of an external scope to a grade which suits the internal scope.
    * The grades 1-100, 1-10 and F-A are supported for conversion.
    *
    * @param {*} oldMax - The max of the old grade.
    * @param {*} oldGrade - The old grade, to be converted.
-   * @returns {number} number - Returns a number.
+   * @returns {number} - Returns a converted grade.
    */
   convertGrade (oldMax, oldGrade) {
-    switch (oldMax) {
-      case 100: {
-        const newGrade = Math.round(oldGrade / 100 * 5)
-
-        return newGrade
-      }
-      case 10: {
-        const newGrade = Math.round(oldGrade / 10 * 5)
-
-        return newGrade
-      }
-      case 'A': {
-        const transitionGrade = oldGrade === 'F' ? oldGrade = 'E' : oldGrade
-
-        const letterArray = ['F', 'E', 'D', 'C', 'B', 'A']
-        const newGrade = letterArray.indexOf(transitionGrade)
-
-        return newGrade
-      }
-      default:
-        throw new Error('This grade scope is not supported.')
+    if (oldMax === 100) {
+      const newGrade = Math.round(oldGrade / 100 * 5)
+      return newGrade
+    } else if (oldMax === 10) {
+      const newGrade = Math.round(oldGrade / 10 * 5)
+      return newGrade
+    } else if (oldMax === 'A') {
+      const transitionGrade = oldGrade === 'F' ? oldGrade = 'E' : oldGrade
+      const letterArray = ['F', 'E', 'D', 'C', 'B', 'A']
+      const newGrade = letterArray.indexOf(transitionGrade)
+      return newGrade
+    } else {
+      throw new Error('This grade scope is not supported.')
     }
   }
 
   /**
-   * Convert a grade of an external scope to a grade which suits the internal scope, and prints it.
    * The grades 1-100, 1-10 and F-A are supported for conversion.
    *
    * @param {*} oldMax - The max of the old grade.
@@ -371,9 +354,7 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Validate if the array satisfies the demands.
-   *
-   * @param {number[]} array - Array of objects.
+   * @param {number[]} array - Array to be validated.
    */
   validateArray (array) {
     if (!Array.isArray(array)) {
