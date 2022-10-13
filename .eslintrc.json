@@ -1,6 +1,8 @@
 {
-    "extends": ["@lnu"],
+    "extends": "@lnu",
     "rules": {
-        "no-unused-vars": "off"
+      "jsdoc/require-jsdoc": "off",
+      "jsdoc/require-description": "off",
+      "no-unused-vars": "off"
     }
 }

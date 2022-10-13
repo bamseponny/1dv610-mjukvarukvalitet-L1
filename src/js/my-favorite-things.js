@@ -4,17 +4,9 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './test-database.js'
+import library from './database.js'
 
-/**
- * Represents a MyFavoriteThings class.
- *
- * @class My Favorite Things
- */
 export class MyFavoriteThings {
-  /**
-   * Creates an instance of MyFavoriteThings.
-   */
   constructor () {
     this.minimumGrade = 1
     this.maximumGrade = 5
@@ -22,11 +14,9 @@ export class MyFavoriteThings {
   }
 
   /**
-   * List the complete database array of objects in alphabetical order.
-   *
-   * @returns {Array[]} numbers - Returns an array of objects.
+   * @returns {Array[]} - Returns an array of sorted objects with the favorite things.
    */
-  listAllTitles () {
+  listAllLibraryObjects () {
     this.validateArray(library)
     library.sort((a, b) => {
       const titleA = a.title
@@ -39,11 +29,8 @@ export class MyFavoriteThings {
     return library
   }
 
-  /**
-   * Print all the favorite things in the database to the console.
-   */
-  printAllTitles () {
-    this.listAllTitles()
+  printAllLibraryObjects () {
+    this.listAllLibraryObjects()
     console.log(`A complete list of ${this.MyFavoriteThings} in the library:`)
     library.forEach((element) => {
       console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
@@ -51,20 +38,16 @@ export class MyFavoriteThings {
   }
 
   /**
-   * Returns an array of all favorite things from a certain time span.
-   *
    * @param {number} startYear - Chosen start year.
    * @param {number} endYear - Chosen end year.
-   * @returns {Array[]} strings - Returns an array of strings.
+   * @returns {Array[]} strings - Returns an array of strings with found object titles.
    */
   listByTimeSpan (startYear, endYear) {
-    const titlesOfTimeSpan = []
-    for (const element of library) {
-      if (element.releaseYear >= startYear && element.releaseYear <= endYear) {
-        titlesOfTimeSpan.push(element.title)
-      }
-    }
-    return titlesOfTimeSpan
+    const filteredLibraryByTimeSpan = library.filter((listOfThings) => (listOfThings.releaseYear >= startYear) &&
+      (listOfThings.releaseYear <= endYear))
+    this.validateArray(filteredLibraryByTimeSpan)
+
+    return filteredLibraryByTimeSpan
   }
 
   /**
@@ -125,6 +108,7 @@ export class MyFavoriteThings {
         case 'format': {
           const filterTheLibrary = library.filter((listOfThings) => listOfThings.format === dataValue)
           this.validateArray(filterTheLibrary)
+          console.log(filterTheLibrary)
           const filteredLibrary = filterTheLibrary.map(format => format.title).sort()
 
           return filteredLibrary
@@ -205,11 +189,6 @@ export class MyFavoriteThings {
     return totalHours
   }
 
-  /**
-   * Calculate and returns the total number of days spent with the collection.
-   *
-   * @returns {number} number - Returns a number.
-   */
   calculateNumberOfDaysSpent () {
     const hourArray = this.getNumbers('hours')
     const daysSpent = Math.round((hourArray.reduce((num1, num2) => (num1 + num2))) / 24)
