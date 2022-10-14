@@ -33,7 +33,8 @@ export class MyFavoriteThings {
     this.listAllLibraryObjects()
     console.log(`A complete list of ${this.MyFavoriteThings} in the library:`)
     library.forEach((element) => {
-      console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
+      console.log(`${element.title} *** FORMAT: ${element.format} *** RELEASE YEAR: ${element.releaseYear} 
+          *** GRADE: ${element.grade} of ${this.maximumGrade} *** PLAY TIME: ${element.hoursPlayed} hours`)
     })
   }
 
