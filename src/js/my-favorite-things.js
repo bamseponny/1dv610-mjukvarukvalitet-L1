@@ -4,7 +4,7 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './database.js'
+import library from './test-database.js'
 
 export class MyFavoriteThings {
   constructor () {
@@ -145,25 +145,6 @@ export class MyFavoriteThings {
       throw Error('Please pass a valid grade.')
     }
   }
-
-  /**
-   * Prints out favorite things in the library depending on the chosen data type and data value.
-   *
-   * @param {string} dataType - Chosen data type.
-   * @param {*} dataValue - Chosen data value.
-   */
-  /* printFilteredData (dataType, dataValue) {
-    if (dataType === 'format') {
-      const filteredData = this.filterByFormat(dataValue)
-      console.log(`The ${this.MyFavoriteThings} on ${dataValue} in your collection are ${filteredData.join(', ')}.`)
-    } else if (dataType === 'releaseYear') {
-      const filteredData = this.filterByReleaseYear(dataValue)
-      console.log(`The ${this.MyFavoriteThings} from ${dataValue} in your collection are ${filteredData.join(', ')}.`)
-    } else if (dataType === 'grade') {
-      const filteredData = this.filterByReleaseYear(dataValue)
-      console.log(`The ${this.MyFavoriteThings} with the grade ${dataValue} in your collection are ${filteredData.join(', ')}.`)
-    }
-  } */
 
   /**
    * @returns {number[]} - Returns an array of hour numbers.
