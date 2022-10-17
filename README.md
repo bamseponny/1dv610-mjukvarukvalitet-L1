@@ -1,5 +1,7 @@
 # My Favorite Things
 
+A library aimed towards a **developer** who wants to sort and filter an array of objects with a certain favorite thing. As a **developer** and **examinator** you should also check out the [DEVELOPER](/DEVELOPER.md) file, where you find the project's vision, requirements, test report – as well as the code quality requirements and reflections aimed towards the **examinator**. An application which uses this library can also be found on [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2).
+
 ## Description
 
 Very warm welcome to the **JavaScript** library **My Favorite Things**. With this library you can take the favorite thing of your choice in one certain category – how about books, films, video games or tv shows? – and collect them in a library where you can sort them, for example, alphabetically, by grade and discover statistics about the time you have spent with the things.

@@ -2,7 +2,7 @@
 
 Målet med det här biblioteket, My Favorite Things, är att en användare ska kunna jobba med en array bestående av objekt. Objekten i sin tur innehåller en viss sorts favoritsaker. Det kan t.ex. vara filmer, böcker eller spel.
 
-Biblioteket används i sin tur i laboration 2, vilket återfinns via [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2).
+Biblioteket används i sin tur i laboration 2, vars fulla kod och dokumentation återfinns via [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2).
 
 ## Kravspecifikation
 * En användare ska ha en lista på en viss typ av favoritsaker; en array med objekt.
