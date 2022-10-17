@@ -1,6 +1,6 @@
 # My Favorite Things
 
-A library aimed towards a **developer** who wants to sort and filter an array of objects with a certain favorite thing. As a **developer** and **examinator** you should also check out the [DEVELOPER](/DEVELOPER.md) file, where you find the project's vision, requirements, test report – as well as the code quality requirements and reflections aimed towards the **examinator**. An application which uses this library can also be found on [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2).
+A library aimed towards a **developer** who wants to sort and filter an array of objects with a certain favorite thing. As a **developer** you should also check out the [DEVELOPER](/DEVELOPER.md) file, where you find the project's vision, requirements and test report. The [REFLECTION](/REFLECTION.md) contains the code quality requirements and reflections aimed towards the **examinator**. An application, laboratory 2, which uses this library can also be found on [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2). This should be of interest for both the **examinator** and **developers**.
 
 ## Description
 
