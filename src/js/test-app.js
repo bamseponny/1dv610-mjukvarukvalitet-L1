@@ -28,8 +28,8 @@ const oldGrade = 28
 /* testApp.printAllLibraryObjects() */
 
 // Find titles in library by time span
-/* console.log(testApp.listByTimeSpan(startYear, endYear))
-testApp.printByTimeSpan(startYear, endYear) */
+/* console.log(testApp.listByTimeSpan(startYear, endYear)) */
+/* testApp.printByTimeSpan(startYear, endYear) */
 
 // Find titles in library by passed string
 /* console.log(testApp.findLibraryObjects('A')) */
@@ -38,7 +38,7 @@ testApp.printByTimeSpan(startYear, endYear) */
 // Filter data in library
 /* console.log(testApp.filterByFormat(passedFormat)) */
 /* console.log(testApp.filterByReleaseYear(passedYear)) */
-/* console.log(testApp.filterByGrade(passedGrade)) */
+console.log(testApp.filterByGrade(passedGrade))
 
 // Time statistics of library
 /* console.log(testApp.getHourNumbers()) */
@@ -49,11 +49,11 @@ testApp.printByTimeSpan(startYear, endYear) */
 /* testApp.PrintTimeStatistics() */
 
 // Grade statistics of the library
-console.log(testApp.getGradeNumbers())
+/* console.log(testApp.getGradeNumbers())
 console.log(testApp.calculateAverageGrade())
 console.log(testApp.calculateMedianGrade())
 console.log(testApp.calculateModeGrade())
-testApp.printGradeStatistics()
+testApp.printGradeStatistics() */
 
 // Convert an old grade to match the libraries' scope
 /* console.log(testApp.convertGrade(oldMax, oldGrade))

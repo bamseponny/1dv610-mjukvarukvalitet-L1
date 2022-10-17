@@ -4,7 +4,7 @@
  * @author Fredrik Eriksson <ferth09@student.lnu.se>
  */
 
-import library from './test-database.js'
+import library from './database.js'
 
 export class MyFavoriteThings {
   constructor () {

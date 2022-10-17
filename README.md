@@ -1,6 +1,6 @@
 # My Favorite Things
 
-A library aimed towards a **developer** who wants to sort and filter an array of objects with a certain favorite thing. As a **developer** you should also check out the [DEVELOPER](/DEVELOPER.md) file, where you find the project's vision, requirements and test report. The [REFLECTION](/REFLECTION.md) contains the code quality requirements and reflections aimed towards the **examinator**. An application, laboratory 2, which uses this library can also be found on [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2). This should be of interest for both the **examinator** and **developers**.
+A library aimed towards a **developer** who wants to sort and filter an array of objects with a certain favorite thing (for examble: books, films, video games). As a **developer** you are recommended to check out the [DEVELOPER](/DEVELOPER.md) file, where you'll find the project's vision, requirements and test report. The [REFLECTION](/REFLECTION.md) contains the code quality requirements and reflections aimed towards the **examinator**. An application, laboratory 2, which uses this library can also be found on [Github](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L2). This should be of interest for both the **examinator** and **developers**.
 
 ## Description
 
@@ -10,11 +10,12 @@ You are of course free to change the library that it better suits your needs. If
 
 ## Installation
 
-Open a termial in the application folder and input *"npm install"*.
-
-```
-npm install
-```
+1. Copy the repository via [GitHub](https://github.com/bamseponny/1dv610-mjukvarukvalitet-L1), `https://github.com/bamseponny/1dv610-mjukvarukvalitet-L1.git`
+2. Open a terminal window in a folder where you want to clone the repositorium.
+3. Input the command `git clone https://github.com/bamseponny/1dv610-mjukvarukvalitet-L1.git` to clone the project.
+4. Open an integrated development environment (IDE) of your choice.
+5. Run the commando `npm install` to install dependecies.
+6. Run the commando `npm start` to try out the application via the test app (more info below).
 
 ## Usage
 
@@ -42,7 +43,7 @@ After producing your first iteration of the library (which can include one to ma
 - List all titles in the console.
 
 ```bash
-testApp.printAllTitles()
+favoriteGames.printAllLibraryObjects()
 ```
 
 List the complete database of favorite things in alphabetical order.
@@ -58,29 +59,63 @@ Horizon Forbidden West *** FORMAT: Playstation 5 *** RELEASE YEAR: 2022 *** GRAD
 - List by time span
 
 ```bash
-console.log(favoriteBooks.listByTimeSpan(1850, 2000))
+console.log(favoriteGames.listByTimeSpan(2015, 2020))
 ```
 Get all favorite things from a certain time span.
 
 ```bash
 [
-  'The Lord of the Rings',
-  'Moby Dick',
-  'Harry Potter and the Goblet of Fire'
+  {
+    title: 'The Last of Us Part II',
+    format: 'Playstation 4',        
+    releaseYear: 2020,
+    genre: 'Action',
+    series: 'The Last of Us',       
+    grade: 4,
+    hoursPlayed: 30
+  },
+  {
+    title: 'Ratchet & Clank',       
+    format: 'Playstation 4',
+    releaseYear: 2016,
+    genre: 'Platform',
+    series: 'Ratchet & Clank',
+    grade: 4,
+    hoursPlayed: 16
+  }
 ]
 ```
 
 ***
 
-- Filter and print by data
+- Filter by a certain grade
 
 ```bash
-favoriteGames.filterByData('grade', 4)
+favoriteGames.filterByGrade(4)
 ```
-Filter the favorite things in the library depending on the chosen data type and data value (the grade 4 in this case).
+Filter the favorite things in the library depending on the grade and grade value (3 in this case).
 
 ```bash
-The video games with the grade 4 in your collection are Enslaved: Odyssey to the West, Paper Mario, The Last of Us Part I, The Last of Us Part II.
+[
+  {
+    title: 'Star Wars: Knights of the Old Republic',
+    format: 'Xbox',
+    releaseYear: 2013,
+    genre: 'RPG',
+    series: 'Star Wars: Knights of the Old Republic',
+    grade: 3,
+    hoursPlayed: 88
+  },
+  {
+    title: 'Syberia',
+    format: 'Pc',
+    releaseYear: 2002,
+    genre: 'Adventure',
+    series: '',
+    grade: 3,
+    hoursPlayed: 10
+  }
+]
 ```
 
 ***
@@ -88,12 +123,12 @@ The video games with the grade 4 in your collection are Enslaved: Odyssey to the
 - Calculate average
 
 ```bash
-favoriteTvShows.calculateAverage()
+favoriteGames.calculateAverageGrade()
 ```
-Calculates the average of an array with numbers (the grades in this case).
+Calculates the average of an array with numbers, the grades in this case.
 
 ```bash
-3.67.
+3.67
 ```
 
 ***
@@ -101,7 +136,7 @@ Calculates the average of an array with numbers (the grades in this case).
 - Convert old grade and print new grade
 
 ```bash
-console.log(favoriteFilms.convertGrade(28, 100)
+console.log(favoriteGames.convertGrade(28, 100)
 ```
 Convert a grade of an external scope to a grade which suits the internal scope. In this example we convert 28 out of 100 to a new grade, with maximum value at 5.
 
